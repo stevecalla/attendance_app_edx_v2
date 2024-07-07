@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Matchup from './pages/Matchup';
 import Vote from './pages/Vote';
 import NotFound from './pages/NotFound';
-import Test from './pages/Test';
+import Attendance from './pages/Attendance.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/attendance-app',
-        element: <Test />
+        element: <Attendance/>
       },
       {
         path: '/*',
