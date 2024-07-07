@@ -8,7 +8,7 @@ import { getAllTech, createMatchup } from '../utils/api';
 // import { CREATE_MATCHUP } from '../utils/mutations';
 
 const Matchup = () => {
-  const [techList, setTechList] = useState([]);
+  // const [techList, setTechList] = useState([]);
   const [formData, setFormData] = useState({
     tech1: 'JavaScript',
     tech2: 'JavaScript',
@@ -16,19 +16,19 @@ const Matchup = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const getTechList = async () => {
-      try {
-        const res = await getAllTech();
-        if (!res.ok) {
-          throw new Error('No list of technologies');
-        }
-        const techList = await res.json();
-        setTechList(techList);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getTechList();
+    // const getTechList = async () => {
+    //   try {
+    //     const res = await getAllTech();
+    //     if (!res.ok) {
+    //       throw new Error('No list of technologies');
+    //     }
+    //     const techList = await res.json();
+    //     setTechList(techList);
+    //   } catch (err) {
+    //     console.error(err);
+    //   }
+    // };
+    // getTechList();
   }, []);
 
   const handleInputChange = (event) => {
@@ -68,23 +68,9 @@ const Matchup = () => {
         <form onSubmit={handleFormSubmit}>
           <label>Tech 1: </label>
           <select name="tech1" onChange={handleInputChange}>
-            {techList.map((tech) => {
-              return (
-                <option key={tech._id} value={tech.name}>
-                  {tech.name}
-                </option>
-              );
-            })}
           </select>
           <label>Tech 2: </label>
           <select name="tech2" onChange={handleInputChange}>
-            {techList.map((tech) => {
-              return (
-                <option key={tech._id} value={tech.name}>
-                  {tech.name}
-                </option>
-              );
-            })}
           </select>
           <button className="btn btn-danger" type="submit">
             Create Matchup!
