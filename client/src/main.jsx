@@ -6,22 +6,33 @@ import Home from './pages/Home';
 import Matchup from './pages/Matchup';
 import Vote from './pages/Vote';
 import NotFound from './pages/NotFound';
+import Test from './pages/Test';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <NotFound />,
+    // errorElement: <NotFound />,
     children: [
       {
         index: true,
         element: <Home />
-      }, {
+      }, 
+      {
         path: '/matchup',
         element: <Matchup />
-      }, {
+      }, 
+      {
         path: '/matchup/:id',
         element: <Vote />
+      },
+      {
+        path: '/attendance-app',
+        element: <Test />
+      },
+      {
+        path: '/*',
+        element: <NotFound />
       },
     ],
   },
