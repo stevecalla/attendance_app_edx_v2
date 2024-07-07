@@ -1,0 +1,22 @@
+/* //SECTION CUSTOM NAV */
+
+/* ENSURE NAV DOESN'T STRINK TO SMALL */
+.navbar {
+  min-width: 350px;
+}
+
+/* CUSTOM NAV STYLE */
+.navbar-brand {
+  font-family: "Playwrite CO", cursive;
+  font-size: 24px;
+}
+
+/* POSITION NAV LINKS TO THE RIGHT IN DESKTOP */
+.navbar-collapse {
+  flex-grow: 0;
+}
+
+/* POSITION NAV LINKS TO THE RIGHT IN MOBILE */
+.navbar-nav {
+  text-align: right;
+}
