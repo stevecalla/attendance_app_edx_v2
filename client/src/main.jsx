@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         element: <Vote />
       },
       {
-        path: '/attendance-app',
+        path: '/attendance',
         element: <Attendance/>
       },
       {
