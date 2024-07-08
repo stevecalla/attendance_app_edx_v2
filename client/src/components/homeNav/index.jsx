@@ -12,6 +12,7 @@ function HomeNav() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link
+              className="p-0"
               target="_blank"
               href="https://www.buymeacoffee.com/stevecalla"
             >
