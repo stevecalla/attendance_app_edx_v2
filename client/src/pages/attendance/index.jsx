@@ -2,9 +2,6 @@ import "./attendance.css";
 
 import AttendanceTabs from "../../components/attendanceTabs";
 
-// import Tab from "react-bootstrap/Tab";
-// import Tabs from "react-bootstrap/Tabs";
-
 function Attendance() {
   return (
     <div className="main-container">

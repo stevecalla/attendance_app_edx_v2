@@ -272,6 +272,7 @@ function AttendancePanel() {
                     id="student-container"
                     className="accordion m-0 custom-student-container hidden"
                   ></div>
+                  
                 </div>
               </div>
             </div>
