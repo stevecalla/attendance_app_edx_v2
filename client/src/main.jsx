@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import Matchup from './pages/Matchup';
 import Vote from './pages/Vote';
 import NotFound from './pages/NotFound';
-import Attendance from './pages/Attendance.jsx';
+import Attendance from './pages/attendance/';
 
 const router = createBrowserRouter([
   {

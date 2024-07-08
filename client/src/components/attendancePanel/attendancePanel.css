@@ -1,0 +1,87 @@
+/* //SECTION UPLOAD STATUS */
+.upload-status {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.student-upload-status,
+.participant-upload-status {
+  text-align: center;
+}
+
+.status-icon {
+  margin-left: 8px;
+}
+
+/* //SECTION STATS CONTAINERS */
+.floating-input {
+  font-size: 12px;
+}
+
+/* //SECTION STUDENT CONTAINER */
+.custom-student-container {
+  height: 325px;
+  overflow: scroll;
+}
+
+/* //SECTION PRESENT / ABSENT ICONS */
+.student-name {
+  width: 85%;
+}
+
+.match-score,
+.duration {
+  width: 50px;
+  text-align: center;
+}
+
+.checkmark,
+.cross {
+  font-size: 1.2em; /* Adjust font size as needed */
+}
+
+/* HIDE */
+.hidden {
+  display: none;
+}
+
+/* UPLOAD BUTTON */
+.custom-disabled-hide {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* HIDE COLLAPSE CONTAINER DOWN ARROW */
+.custom-hide-expand-icon.accordion-button::after {
+  display: none;
+}
+
+/* //SECTION Media Queries */
+@media screen and (min-width: 992px) and (max-width: 1100px) {
+  .status-icon {
+    text-align: center;
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .student-upload-status,
+  .participant-upload-status {
+    text-align: center;
+  }
+
+  .status-icon {
+    margin-left: 0px;
+  }
+
+  .floating-input {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .floating-input {
+    font-size: 8px;
+  }
+}

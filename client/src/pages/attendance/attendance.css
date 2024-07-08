@@ -1,0 +1,22 @@
+/* //SECTION MAIN CONTAINER */
+.main-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-width: 350px;
+}
+
+/* //SECTION ATTENDANCE CONTAINER */
+.sub-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 45%;
+  height: 650px;
+  min-width: 375px;
+  margin-top: 10px;
+}
+
+.attendance-card {
+  height: 100%;
+}

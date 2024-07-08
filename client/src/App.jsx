@@ -7,10 +7,10 @@ import HomeNav from "./components/homeNav";
 
 function App() {
   return (
-    <div className="flex-column justify-center align-center min-100-vh bg-primary">
+    <>
       <HomeNav />
       <Outlet />
-    </div>
+    </>
   );
 }
 
