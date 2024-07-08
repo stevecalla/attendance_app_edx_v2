@@ -5,7 +5,7 @@ import "./homeNav.css";
 
 function HomeNav() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-body-tertiary navbar-expand-sm">
       <Container>
         <Navbar.Brand href="#home">Attendance App</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
