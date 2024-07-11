@@ -7,7 +7,7 @@ import AttendancePanel from "../attendancePanel";
 function AttendanceTabs() {
   return (
     <section className="card attendance-card">
-      <Tabs defaultActiveKey="profile" id="" className="m-4" fill>
+      <Tabs defaultActiveKey="attendance" id="" className="m-3 mb-1" fill>
 
         <Tab eventKey="attendance" title="Attendance">
           <AttendancePanel />

@@ -1,3 +1,9 @@
+/* //SECTION STUDENT CONTAINER */
+.custom-student-container {
+  height: 325px;
+  overflow: scroll;
+}
+
 /* //SECTION PRESENT / ABSENT ICONS */
 .student-name {
   width: 85%;
@@ -14,22 +20,16 @@
   font-size: 1.2em; /* Adjust font size as needed */
 }
 
-/* HIDE */
-.hidden {
-  display: none;
-}
-
-/* UPLOAD BUTTON */
-.custom-disabled-hide {
-  opacity: 0.5;
-  pointer-events: none;
-  cursor: not-allowed;
-}
-
 /* HIDE COLLAPSE CONTAINER DOWN ARROW */
-.custom-hide-expand-icon.accordion-button::after {
-  display: none;
+/* .student-name {
+  color: red;
+} */
+
+h2.custom-hide-expand-icon > button.accordion-button::after {
+  /* background-color: red!important; */
+  display: none!important;
 }
+
 
 /* //SECTION Media Queries */
 @media screen and (min-width: 992px) and (max-width: 1100px) {

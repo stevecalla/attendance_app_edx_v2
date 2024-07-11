@@ -1,18 +1,8 @@
-/* HIDE */
-.hidden {
-  display: none;
-}
-
 /* UPLOAD BUTTON */
 .custom-disabled-hide {
   opacity: 0.5;
   pointer-events: none;
   cursor: not-allowed;
-}
-
-/* HIDE COLLAPSE CONTAINER DOWN ARROW */
-.custom-hide-expand-icon.accordion-button::after {
-  display: none;
 }
 
 /* //SECTION Media Queries */

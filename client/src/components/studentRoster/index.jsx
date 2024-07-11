@@ -1,3 +1,5 @@
+import Accordion from "react-bootstrap/Accordion";
+
 function StudentRoster() {
   const students = [];
 
@@ -5,29 +7,16 @@ function StudentRoster() {
 
   for (let i = 0; i < data.length; i++) {
     students.push(
-      <article className="accordion-item" key={i}>
-        <h2 className="accordion-header">
-          <button
-            className="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target={`#score_container_{i}`}
-            aria-expanded="false"
-            aria-controls={`score_container_{i}`}
-          >
-            <span className="me-2">{i + 1})</span>
-            <span className="student-name">{data[i]}</span>
-            </button>
-        </h2>
-      </article> 
+      <Accordion.Item eventKey={i} key={i}>
+      <Accordion.Header className="custom-hide-expand-icon">
+        <span className="me-2">{i + 1})</span>
+        <span className="student-name">{data[i]}</span>
+      </Accordion.Header>
+      </Accordion.Item>
     );
   }
 
-  return (
-    <>
-      {students}
-    </>
-  );
+  return <Accordion>{students}</Accordion>;
 }
 
 export default StudentRoster;
