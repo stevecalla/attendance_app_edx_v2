@@ -1,3 +1,19 @@
+/* //SECTION PRESENT / ABSENT ICONS */
+.student-name {
+  width: 85%;
+}
+
+.match-score,
+.duration {
+  width: 50px;
+  text-align: center;
+}
+
+.checkmark,
+.cross {
+  font-size: 1.2em; /* Adjust font size as needed */
+}
+
 /* HIDE */
 .hidden {
   display: none;

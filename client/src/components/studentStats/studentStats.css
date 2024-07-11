@@ -1,0 +1,17 @@
+/* //SECTION STATS CONTAINERS */
+.floating-input {
+  font-size: 12px;
+}
+
+/* //SECTION Media Queries */
+@media screen and (max-width: 600px) {
+  .floating-input {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .floating-input {
+    font-size: 8px;
+  }
+}
