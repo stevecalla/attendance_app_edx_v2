@@ -21,12 +21,7 @@
 }
 
 /* HIDE COLLAPSE CONTAINER DOWN ARROW */
-/* .student-name {
-  color: red;
-} */
-
 h2.custom-hide-expand-icon > button.accordion-button::after {
-  /* background-color: red!important; */
   display: none!important;
 }
 

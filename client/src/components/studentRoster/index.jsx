@@ -2,7 +2,6 @@ import Accordion from "react-bootstrap/Accordion";
 
 function StudentRoster() {
   const students = [];
-
   const data = ["student a", "student b"];
 
   for (let i = 0; i < data.length; i++) {

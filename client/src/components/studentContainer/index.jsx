@@ -2,7 +2,7 @@ import "./studentContainer.css";
 
 import StudentPlaceholder from "../studentPlaceholder";
 import StudentRoster from "../studentRoster";
-import StudentRosterAttendance from "../studentRosterAttendance";
+import StudentRosterAttendace from "../studentRosterAttendance";
 
 function StudentContainer() {
   return (
@@ -10,9 +10,9 @@ function StudentContainer() {
       id="student-container"
       className="accordion m-0 custom-student-container"
     >
-      {/* <StudentPlaceholder /> */}
+      <StudentPlaceholder />
       <StudentRoster />
-      <StudentRosterAttendance />
+      <StudentRosterAttendace />
     </div>
   );
 }

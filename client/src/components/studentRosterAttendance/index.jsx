@@ -58,7 +58,7 @@ function StudentRosterAttendance() {
     );
   }
 
-  return <Accordion defaultActiveKey>{students}</Accordion>;
+  return <Accordion>{students}</Accordion>;
 }
 
 export default StudentRosterAttendance;
