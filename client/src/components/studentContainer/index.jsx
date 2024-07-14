@@ -4,15 +4,15 @@ import StudentPlaceholder from "../studentPlaceholder";
 import StudentRoster from "../studentRoster";
 import StudentRosterAttendace from "../studentRosterAttendance";
 
-function StudentContainer() {
+function StudentContainer({ isStudentFileUploaded }) {
   return (
     <div
       id="student-container"
       className="accordion m-0 custom-student-container"
     >
-      <StudentPlaceholder />
-      <StudentRoster />
-      <StudentRosterAttendace />
+      {!isStudentFileUploaded && <StudentPlaceholder />}
+      <StudentRoster isStudentFileUploaded={isStudentFileUploaded} />
+      {!isStudentFileUploaded && <StudentRosterAttendace />}
     </div>
   );
 }

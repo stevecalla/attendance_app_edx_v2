@@ -4,8 +4,9 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 
-// import { checkHost } from './middleware_origin.js';
-// import { verifyTokenMiddleware} from "./utilities/auth/auth.js";
+// const { checkHost } = require('./middleware_origin.js');
+const { verifyTokenMiddleware } = require('./utilities/auth');
+
 
 const routes = require("./routes");
 
@@ -21,7 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.text());
 // verify token; if valid pass decoded user as req.user
 // if not valid, req.user is not available to routes
-// app.use(verifyTokenMiddleware); 
+app.use(verifyTokenMiddleware); 
 
 app.use(routes);
 

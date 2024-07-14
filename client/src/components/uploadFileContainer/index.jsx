@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import UploadFileSelector from "../uploadFileSelector/index.jsx";
 import UploadFileButton from "../uploadFileButton";
 
-function UploadFilePicker() {
+function UploadFileContainer({ isStudentFileUploaded, setIsStudentFileUploaded }) {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -15,18 +15,22 @@ function UploadFilePicker() {
     <div className="input-group mb-3">
       <UploadFileSelector
         setIsDisabled={setIsDisabled}
-        setSelectedFiles={setSelectedFiles}
         selectedFiles={selectedFiles}
+        setSelectedFiles={setSelectedFiles}
+        isStudentFileUploaded={isStudentFileUploaded}
+        setIsStudentFileUploaded={setIsStudentFileUploaded}
       />
 
       <UploadFileButton 
         isDisabled={isDisabled} 
         setIsDisabled={setIsDisabled}
         selectedFiles={selectedFiles} 
+        setSelectedFiles={setSelectedFiles}
+        setIsStudentFileUploaded={setIsStudentFileUploaded}
       />
 
     </div>
   );
 }
 
-export default UploadFilePicker;
+export default UploadFileContainer;

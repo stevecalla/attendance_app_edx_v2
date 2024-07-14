@@ -1,23 +1,68 @@
 import { useState, useRef, useEffect } from "react";
 
+import {
+  validateToken,
+  generateToken,
+} from "../../utils/manage_token_user_id.js";
 import { readCSVFile } from "../../utils/readCSVFile";
 import { validateCSVContent } from "../../utils/validateCSVContent";
 
-function UploadFileSelector({ setIsDisabled, setSelectedFiles, selectedFiles }) {
+function UploadFileSelector({
+  setIsDisabled,
+  setSelectedFiles,
+  selectedFiles,
+  isStudentFileUploaded,
+  setIsStudentFileUploaded,
+}) {
   const fileInputRef = useRef(null);
   const [alertStyle, setAlertStyle] = useState(true);
 
   useEffect(() => {
+    if (isStudentFileUploaded) {
+      fileInputRef.current.value = "";
+      setSelectedFiles([]); // Clear selected files state
+      setIsDisabled(true); // Disable the upload file button
+    }
+    setIsStudentFileUploaded(false);
+  }, [
+    setIsDisabled,
+    selectedFiles,
+    setSelectedFiles,
+    isStudentFileUploaded,
+    setIsStudentFileUploaded,
+  ]);
+
+  useEffect(() => {
     console.log(selectedFiles);
-    console.log('ref = ', fileInputRef);
-    console.log('ref current = ', fileInputRef.current);
-    console.log('ref value = ', fileInputRef.current.value);
-  // C:\fakepath\zoomus_meeting_report_99367572825.csv
-  // C:\fakepath\student_roster_06-01-2024_13_57_58_MDT.csv
-  }, [ fileInputRef, selectedFiles ]);
+    console.log("ref = ", fileInputRef);
+    console.log("ref current = ", fileInputRef.current);
+    console.log("ref value = ", fileInputRef.current.value);
+    // C:\fakepath\zoomus_meeting_report_99367572825.csv
+    // C:\fakepath\student_roster_06-01-2024_13_57_58_MDT.csv
+    // console.log('onclick event target files[0].name = ', event?.target?.files[0]?.name);
+    // console.log('onclick fileInputRef.current.value = ', fileInputRef.current.value);
+    // console.log('includes = ', fileInputRef.current.value.includes(event?.target?.files[0]?.name));
+  }, [fileInputRef, selectedFiles]);
+
+  const handleClick = async () => {
+    // Setting fileInputRef.current.value = "" onClick ensures if the user clicks
+    // the "Choose File" button for the same file consecutively React will execute
+    // the related functions.
+    fileInputRef.current.value = "";
+    setSelectedFiles([]); // Clear selected files state
+    setIsDisabled(true); // Disable the upload file button
+  };
 
   const handleSelectFile = async (event) => {
-    // const token = await manageTokenUserId();
+    const isTokenExpired = await validateToken(); // ensure user-id/token is valid
+
+    if (isTokenExpired) {
+      await generateToken();
+      fileInputRef.current.value = "";
+      setSelectedFiles([]); // Clear selected files state
+      setIsDisabled(true); // Disable the upload file button
+      return;
+    }
 
     const files = event.target.files;
 
@@ -30,7 +75,7 @@ function UploadFileSelector({ setIsDisabled, setSelectedFiles, selectedFiles }) 
 
       for (const file of filesArray) {
         let csvContent = await readCSVFile(file); // get content
-        console.log(csvContent);
+        console.log("content = ", csvContent);
 
         // validate content
         let isValidFileContent = await validateCSVContent(csvContent);
@@ -44,17 +89,18 @@ function UploadFileSelector({ setIsDisabled, setSelectedFiles, selectedFiles }) 
   };
 
   const handleValidation = (isValidFileContent) => {
-    // handle validation
     if (isValidFileContent) {
       setIsDisabled(false);
     } else {
-      // Show invalid file alert and reset after 2 seconds
+      // Apply alert style to the file name
       setAlertStyle(false);
 
+      // Show invalid file alert
       setTimeout(() => {
         alert("File content is invalid.\n\nPlease select a valid file.");
       }, 200);
 
+      // Reset after 2 seconds
       setTimeout(() => {
         setAlertStyle(true);
 
@@ -67,7 +113,7 @@ function UploadFileSelector({ setIsDisabled, setSelectedFiles, selectedFiles }) 
     }
   };
 
-  // Conditional style for the file name
+  // Conditional style for the file name if invalid file selected
   const fileNameStyle = {
     color: alertStyle ? "initial" : "red", // Set text color to red if isValidFileContent is false
   };
@@ -77,6 +123,7 @@ function UploadFileSelector({ setIsDisabled, setSelectedFiles, selectedFiles }) 
       ref={fileInputRef} // Used to clear the file name
       className="form-control"
       name="fileName"
+      onClick={handleClick}
       onChange={handleSelectFile}
       type="file"
       placeholder="fileName"

@@ -151,7 +151,7 @@ async function findAllRedisKeys() {
 // saveInRedis('test', 'test');
 // findAllRedisKeys();
 // findExactRedisKey("3e42afeb-9773-49e7-af08-0f99fd2a95f6");
-clearAllRedisKeys();
+// clearAllRedisKeys();
 // clearSpecificRedisKeys("7196f43b-fa60-446d-88c7-f9ba02f20108");
 
 module.exports = {

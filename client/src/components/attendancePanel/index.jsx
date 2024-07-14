@@ -1,17 +1,21 @@
+import { useState } from "react";
+
 import "./attendancePanel.css";
 
 import UploadStatus from "../uploadStatus";
-import UploadFilePicker from "../uploadFileContainer";
+import UploadFileContainer from "../uploadFileContainer";
 import StudentStats from "../studentStats";
 import StudentContainer from "../studentContainer";
 
 function AttendancePanel() {
+  const [ isStudentFileUploaded, setIsStudentFileUploaded ] = useState(false);
+
   return (
     <div className="m-4">
       <UploadStatus />
-      <UploadFilePicker />
+      <UploadFileContainer isStudentFileUploaded={isStudentFileUploaded} setIsStudentFileUploaded={setIsStudentFileUploaded} />
       <StudentStats />
-      <StudentContainer />
+      <StudentContainer isStudentFileUploaded={isStudentFileUploaded} />
     </div>
   );
 }

@@ -1,11 +1,21 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect } from "react";
 
+import {
+  validateToken,
+  generateToken,
+} from "../../utils/manage_token_user_id.js";
 import { readCSVFile } from "../../utils/readCSVFile";
 import { saveFileContentRoute } from "../../utils/api";
 
 import "./uploadFileButton.css";
 
-function UploadFileButton({ isDisabled, setIsDisabled, selectedFiles }) {
+function UploadFileButton({
+  isDisabled,
+  setIsDisabled,
+  selectedFiles,
+  setSelectedFiles,
+  setIsStudentFileUploaded,
+}) {
   useEffect(() => {
     console.log("button = ", selectedFiles);
   }, [selectedFiles]);
@@ -14,7 +24,15 @@ function UploadFileButton({ isDisabled, setIsDisabled, selectedFiles }) {
   const handleFileUpload = async (event) => {
     console.log("handleFileUpload = ", selectedFiles[0]);
 
-    // const token = await manageTokenUserId();
+    const isTokenExpired = await validateToken(); // ensure user-id/token is valid
+
+    if (isTokenExpired) {
+      await generateToken();
+      setIsStudentFileUploaded(false); // clears fileInputRef.current.value = "";
+      setSelectedFiles([]); // Clear selected files state
+      setIsDisabled(true); // Disable the upload file button
+      return;
+    }
 
     let fileContent = "";
     const file = selectedFiles[0];
@@ -27,19 +45,19 @@ function UploadFileButton({ isDisabled, setIsDisabled, selectedFiles }) {
     fileContent = await readCSVFile(file);
     console.log("file content = ", fileContent);
 
-    const route = await determineRoute(fileContent); // either /students or /pariticipants
+    const route = await determineRoute(fileContent); // students or participants
     console.log("route = ", route);
 
-    const token = "";
-    const response = await saveFileContent(token, fileContent, route);
+    // const token = "";
+    const response = await saveFileContent(fileContent, route);
 
     let studentList = [];
 
     if (response) {
-      // studentList = await render_student_roster(route, token);
+      setIsStudentFileUploaded(true);
 
       if (studentList?.length === 0) {
-        alert('Please upload student roster before Zoom participants.');
+        alert("Please upload student roster before Zoom participants.");
         // clearChooseFileContent();
         // disableUploadButton();
         setIsDisabled(true);
@@ -78,9 +96,12 @@ function UploadFileButton({ isDisabled, setIsDisabled, selectedFiles }) {
   };
 
   const saveFileContent = async (token = "", fileContent, route) => {
+    console.log("save file content = ", token, fileContent, route);
     try {
-      const response = saveFileContentRoute(token, fileContent, route);
-  
+      const response = await saveFileContentRoute(token, fileContent, route);
+
+      console.log("saveFileContentRoute route = ", response);
+
       if (response.ok) {
         return response.ok;
       } else {
@@ -92,7 +113,7 @@ function UploadFileButton({ isDisabled, setIsDisabled, selectedFiles }) {
         "An error occurred while uploading the file.\n\nPlease upload the correct file format and content."
       );
     }
-  }
+  };
 
   return (
     <label
