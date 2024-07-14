@@ -10,9 +10,9 @@ function StudentContainer({ isStudentFileUploaded }) {
       id="student-container"
       className="accordion m-0 custom-student-container"
     >
-      {!isStudentFileUploaded && <StudentPlaceholder />}
+      <StudentPlaceholder />
       <StudentRoster isStudentFileUploaded={isStudentFileUploaded} />
-      {!isStudentFileUploaded && <StudentRosterAttendace />}
+      <StudentRosterAttendace />
     </div>
   );
 }

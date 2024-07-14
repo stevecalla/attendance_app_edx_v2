@@ -8,12 +8,15 @@ import StudentStats from "../studentStats";
 import StudentContainer from "../studentContainer";
 
 function AttendancePanel() {
-  const [ isStudentFileUploaded, setIsStudentFileUploaded ] = useState(false);
+  const [isStudentFileUploaded, setIsStudentFileUploaded] = useState(false);
 
   return (
     <div className="m-4">
       <UploadStatus />
-      <UploadFileContainer isStudentFileUploaded={isStudentFileUploaded} setIsStudentFileUploaded={setIsStudentFileUploaded} />
+      <UploadFileContainer
+        isStudentFileUploaded={isStudentFileUploaded}
+        setIsStudentFileUploaded={setIsStudentFileUploaded}
+      />
       <StudentStats />
       <StudentContainer isStudentFileUploaded={isStudentFileUploaded} />
     </div>

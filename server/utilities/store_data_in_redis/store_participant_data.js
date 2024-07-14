@@ -1,8 +1,8 @@
-import Papa from "papaparse";
-import { saveInRedis } from "../redis_store.js";
+const Papa = require("papaparse");
+const { saveInRedis } = require("../../controllers/redis_store.js");
 
 // STEP #1: CONVERTS TEXT / CSV FORMAT TO ARRAY WITH WITH EACH ELEMENT
-function parseParticipantResults(postData, user_id) {
+function storeParticipantResults(postData, user_id) {
   try {
     return new Promise((resolve, reject) => {
       Papa.parse(postData, {
@@ -70,4 +70,4 @@ function storeParticipants(parsedResults, user_id) {
   saveInRedis(`${user_id}_participants`, JSON.stringify(participantRoster));
 }
 
-export { parseParticipantResults };
+module.exports = { storeParticipantResults };
