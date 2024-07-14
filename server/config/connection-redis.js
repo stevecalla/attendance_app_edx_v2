@@ -1,8 +1,10 @@
-import dotenv from "dotenv";
-dotenv.config({ path: "../.env" });
+const dotenv = require("dotenv");
+dotenv.config({ path: "../../.env" });
 
-// import RedisStore from "connect-redis";
-import { createClient } from "redis";
+// console.log('process.env.NODE_ENV = ', process.env.NODE_ENV);
+// console.log('process.env.REDIS_URL = ', process.env.REDIS_URL);
+
+const { createClient } = require("redis");
 
 // Initialize client.
 let redisClient = '';
@@ -26,4 +28,4 @@ redisClient.on('error', function(err) {
 
 redisClient.connect().catch(console.error);
 
-export { redisClient };
+module.exports = redisClient;
