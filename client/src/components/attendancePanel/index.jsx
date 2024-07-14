@@ -1,7 +1,7 @@
 import "./attendancePanel.css";
 
 import UploadStatus from "../uploadStatus";
-import UploadFilePicker from "../uploadFilePicker";
+import UploadFilePicker from "../uploadFileContainer";
 import StudentStats from "../studentStats";
 import StudentContainer from "../studentContainer";
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getMatchup, createVote } from '../utils/api';
+import { getMatchup, createVote } from '../utils/api_old';
 
 const Vote = () => {
   const [matchup, setMatchup] = useState({});
