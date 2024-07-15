@@ -16,6 +16,7 @@ function UploadFileButton({
   setSelectedFiles,
   setIsStudentFileUploaded,
   setIsParticipantFileUploaded,
+  fileInputRef,
 }) {
   
   useEffect(() => {
@@ -48,30 +49,44 @@ function UploadFileButton({
       return;
     }
 
-    fileContent = await readCSVFile(file);
-    console.log("file content = ", fileContent);
-
-    const route = await determineRoute(fileContent); // students or participants
-    console.log("route = ", route);
-
-    const response = await saveFileContent(fileContent, route);
-
-    if (response && route === "students") {
-      setIsStudentFileUploaded(true);
-      setIsDisabled(true);
-      setTimeout(() => {
-        alert("Student roster saved successfully.");
-      }, 200);
-      return;
-    }
-
-    if (response && route === "participants") {
-      setIsParticipantFileUploaded(true);
-      setIsDisabled(true);
-      setTimeout(() => {
-        alert("Participants saved successfully.");
-      }, 200);
-      return;
+    try {
+      fileContent = await readCSVFile(file);
+      console.log("file content = ", fileContent);
+  
+      const route = await determineRoute(fileContent); // Determine route based on file content
+      console.log("route = ", route);
+  
+      const response = await saveFileContent(fileContent, route);
+  
+      if (response && route === "students") {
+        setIsStudentFileUploaded(true);
+        setIsParticipantFileUploaded(false);
+        setIsDisabled(true);
+  
+        setTimeout(() => {
+          alert("Student roster saved successfully.");
+        }, 200);
+      } else if (response && route === "participants") {
+        setIsParticipantFileUploaded(true);
+        setIsStudentFileUploaded(false);
+        setIsDisabled(true);
+  
+        setTimeout(() => {
+          alert("Participants saved successfully.");
+        }, 200);
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      alert(
+        "An error occurred while uploading the file.\n\nPlease upload the correct file format and content."
+      );
+    } finally {
+      // Reset file input and selected files
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""; // Clear file input value
+      }
+      setSelectedFiles([]); // Clear selected files state
+      setIsDisabled(true); // Disable the upload file button
     }
   };
 

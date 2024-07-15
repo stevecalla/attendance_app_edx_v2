@@ -1,14 +1,15 @@
 import Accordion from "react-bootstrap/Accordion";
+import Placeholder from 'react-bootstrap/Placeholder';
 
 function StudentPlaceholder() {
   const placeholder = [];
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 10; i++) {
     placeholder.push(
       <Accordion.Item eventKey={i} key={i}>
         <Accordion.Header className="custom-hide-expand-icon">
-          <span className="accordion placeholder col-1 bg-secondary"></span>
-          <span className="accordion placeholder col-11 mx-2 bg-secondary"></span>
+          <Placeholder className="col-1 bg-secondary" size="lg"/>
+          <Placeholder className="col-11 mx-2 bg-secondary" size="lg"/>
         </Accordion.Header>
       </Accordion.Item>
     );

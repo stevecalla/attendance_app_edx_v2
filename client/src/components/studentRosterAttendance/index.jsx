@@ -2,39 +2,10 @@ import { useEffect, useState } from "react";
 import { getAttendanceResults } from "../../utils/api";
 
 import Accordion from "react-bootstrap/Accordion";
+import "./studentRosterAttendance.css";
 
 function StudentRosterAttendance({ isParticipantFileUploaded }) {
-  // const attendance_status = false;
-  // const students = [];
-  // const data = [
-  //   {
-  //     name: "student a",
-  //     matchName: "student aaaaa",
-  //     maxSimilarityScore: 1.0,
-  //     duration: 100,
-  //   },
-  //   {
-  //     name: "student b",
-  //     matchName: "student bbbb",
-  //     maxSimilarityScore: 0.8,
-  //     duration: 100,
-  //   },
-  //   {
-  //     name: "student c",
-  //     matchName: "student cccc",
-  //     maxSimilarityScore: 0.25,
-  //     duration: 100,
-  //   },
-  // ];
-
   const [studentAttendance, setStudentAttendance] = useState([]);
-
-  useEffect(() => {
-    console.log("*******************");
-    console.log("*******************");
-    console.log("*******************");
-    console.log("StudentRosterAttendance = ", isParticipantFileUploaded);
-  }, [isParticipantFileUploaded]);
 
   useEffect(() => {
     isParticipantFileUploaded && fetch_attendance_status();
@@ -42,22 +13,13 @@ function StudentRosterAttendance({ isParticipantFileUploaded }) {
 
   async function fetch_attendance_status() {
     const response = await getAttendanceResults();
-    console.log("fetch_attendance_status", response);
     setStudentAttendance(response);
   }
 
   return (
     <Accordion>
       {studentAttendance?.map(
-        (
-          {
-            name,
-            matchName,
-            maxSimilarityScore: score,
-            duration,
-          },
-          index
-        ) => (
+        ({ name, matchName, maxSimilarityScore: score, duration }, index) => (
           <Accordion.Item eventKey={index} key={index}>
             <Accordion.Header>
               <span className="me-2">{index + 1})</span>
@@ -74,21 +36,27 @@ function StudentRosterAttendance({ isParticipantFileUploaded }) {
               >
                 {duration}
               </span>
-              <span
-                className={`me-2 ${
-                  score > 0.6 ? "checkmark" : "cross"
-                }`}
-              >
+              <span className={`me-2 ${score > 0.6 ? "checkmark" : "cross"}`}>
                 {score > 0.6 ? "✅" : "❌"}
               </span>
             </Accordion.Header>
             <Accordion.Body>
-              <p>Match Name: {matchName}</p>
-              <p>Match Score: {(score * 100).toFixed(0)}%</p>
-              <p>
-                Match Status: {score > 0.6 ? "Present" : "Absent"}
+              <p className="mb-1">
+                <span className="custom-row-label">Match Name:</span>
+                <span className="mx-2 mb-1">{matchName}</span>
               </p>
-              <p>Duration: {duration} minutes</p>
+              <p className="mb-1">
+                <span className="custom-row-label">Match Score:</span>
+                <span className="mx-2">{(score * 100).toFixed(0)}%</span>
+              </p>
+              <p className="mb-1">
+                <span className="custom-row-label">Match Status:</span>
+                <span className="mx-2">{score > 0.6 ? "Present" : "Absent"}</span>
+              </p>
+              <p className="mb-1">
+                <span className="custom-row-label">Duration:</span>
+                <span className="mx-2">{duration} minutes</span>
+              </p>
             </Accordion.Body>
           </Accordion.Item>
         )

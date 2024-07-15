@@ -2,7 +2,7 @@ import "./studentContainer.css";
 
 import StudentPlaceholder from "../studentPlaceholder";
 import StudentRoster from "../studentRoster";
-import StudentRosterAttendace from "../studentRosterAttendance";
+import StudentRosterAttendance from "../studentRosterAttendance";
 
 function StudentContainer({ isStudentFileUploaded, isParticipantFileUploaded }) {
   return (
@@ -10,9 +10,20 @@ function StudentContainer({ isStudentFileUploaded, isParticipantFileUploaded }) 
       id="student-container"
       className="accordion m-0 custom-student-container"
     >
-      <StudentPlaceholder />
-      <StudentRoster isStudentFileUploaded={isStudentFileUploaded} />
-      <StudentRosterAttendace isParticipantFileUploaded={isParticipantFileUploaded} />
+      {/* Show placeholder if neither student nor participant file is uploaded */}
+      {!isStudentFileUploaded && !isParticipantFileUploaded && (
+        <StudentPlaceholder />
+      )}
+
+      {/* Show student roster if student file is uploaded */}
+      {isStudentFileUploaded && (
+        <StudentRoster isStudentFileUploaded={isStudentFileUploaded} />
+      )}
+
+      {/* Show attendance if participant file is uploaded but student file is not */}
+      {isParticipantFileUploaded && !isStudentFileUploaded && (
+        <StudentRosterAttendance isParticipantFileUploaded={isParticipantFileUploaded} />
+      )}
     </div>
   );
 }

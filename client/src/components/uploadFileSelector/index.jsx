@@ -10,44 +10,9 @@ import { validateCSVContent } from "../../utils/validateCSVContent";
 function UploadFileSelector({
   setIsDisabled,
   setSelectedFiles,
-  selectedFiles,
-  isStudentFileUploaded,
-  setIsStudentFileUploaded,
-  isParticipantFileUploaded,
-  setIsParticipantFileUploaded,
+  fileInputRef,
 }) {
-  const fileInputRef = useRef(null);
   const [alertStyle, setAlertStyle] = useState(true);
-
-  useEffect(() => {
-    if (isStudentFileUploaded || isParticipantFileUploaded) {
-      fileInputRef.current.value = "";
-      setSelectedFiles([]); // Clear selected files state
-      setIsDisabled(true); // Disable the upload file button
-    }
-    setIsStudentFileUploaded(false);
-    setIsParticipantFileUploaded(false);
-  }, [
-    setIsDisabled,
-    selectedFiles,
-    setSelectedFiles,
-    isStudentFileUploaded,
-    setIsStudentFileUploaded,
-    isParticipantFileUploaded,
-    setIsParticipantFileUploaded
-  ]);
-
-  useEffect(() => {
-    console.log(selectedFiles);
-    console.log("ref = ", fileInputRef);
-    console.log("ref current = ", fileInputRef.current);
-    console.log("ref value = ", fileInputRef.current.value);
-    // C:\fakepath\zoomus_meeting_report_99367572825.csv
-    // C:\fakepath\student_roster_06-01-2024_13_57_58_MDT.csv
-    // console.log('onclick event target files[0].name = ', event?.target?.files[0]?.name);
-    // console.log('onclick fileInputRef.current.value = ', fileInputRef.current.value);
-    // console.log('includes = ', fileInputRef.current.value.includes(event?.target?.files[0]?.name));
-  }, [fileInputRef, selectedFiles]);
 
   const handleClick = async () => {
     // Setting fileInputRef.current.value = "" onClick ensures if the user clicks
