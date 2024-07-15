@@ -14,6 +14,12 @@ export const validateToken = async () => {
   const localStorageKey = "attendance_token";
   let token = await getLocalStorageItem(localStorageKey);
 
+  // if no token return undefined
+  if (!token) {
+    return undefined;
+  }
+
+  // if token check if expired; if expired return true
   if (token) {
     const isExpired = await isTokenExpired();
     if (isExpired) {
@@ -30,7 +36,8 @@ export const validateToken = async () => {
     }
 
     // await checkUserIDInRedis(token); // if user id not in redis, save to redis
-    // console.log('validateToken storage token 3 = ', token)
+
+    // else return false = token exists & is not expired
     return false;
   }
 };

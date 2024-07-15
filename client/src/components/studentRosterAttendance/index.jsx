@@ -1,64 +1,100 @@
+import { useEffect, useState } from "react";
+import { getAttendanceResults } from "../../utils/api";
+
 import Accordion from "react-bootstrap/Accordion";
 
-function StudentRosterAttendance() {
-  const attendance_status = false;
-  const students = [];
-  const data = [
-    {
-      name: "student a",
-      matchName: "student aaaaa",
-      maxSimilarityScore: 1.0,
-      duration: 100,
-    },
-    {
-      name: "student b",
-      matchName: "student bbbb",
-      maxSimilarityScore: 0.8,
-      duration: 100,
-    },
-    {
-      name: "student c",
-      matchName: "student cccc",
-      maxSimilarityScore: 0.25,
-      duration: 100,
-    },
-  ];
+function StudentRosterAttendance({ isParticipantFileUploaded }) {
+  // const attendance_status = false;
+  // const students = [];
+  // const data = [
+  //   {
+  //     name: "student a",
+  //     matchName: "student aaaaa",
+  //     maxSimilarityScore: 1.0,
+  //     duration: 100,
+  //   },
+  //   {
+  //     name: "student b",
+  //     matchName: "student bbbb",
+  //     maxSimilarityScore: 0.8,
+  //     duration: 100,
+  //   },
+  //   {
+  //     name: "student c",
+  //     matchName: "student cccc",
+  //     maxSimilarityScore: 0.25,
+  //     duration: 100,
+  //   },
+  // ];
 
-  for (let i = 0; i < data.length; i++) {
-    const { name, matchName, maxSimilarityScore: score, duration } = data[i];
+  const [studentAttendance, setStudentAttendance] = useState([]);
 
-    students.push(
-      <Accordion.Item eventKey={i} key={i}>
-        <Accordion.Header>
-          <span className="me-2">{i + 1})</span>
-          <span className="student-name">{name}</span>
-          <span
-            className="me-2 match-score"
-            style={{ color: !attendance_status && "red" }}
-          >
-            {(score * 100).toFixed(0)}%
-          </span>
-          <span
-            className="me-2 duration"
-            style={{ color: !attendance_status && "red" }}
-          >
-            {duration}
-          </span>
-          <span className={`me-2 {attendance_status ? "checkmark" : "cross"}`}>
-            {attendance_status ? "✅" : "❌"}
-          </span>
-        </Accordion.Header>
-        <Accordion.Body>
-          <p>Match Name: {matchName}</p>
-          <p>Match Score: {(score * 100).toFixed(0)}%</p>
-          <p>Match Status: {attendance_status ? "Present" : "Absent"}</p>
-          <p>Duration: {duration} minutes</p>
-        </Accordion.Body>
-      </Accordion.Item>
-    );
+  useEffect(() => {
+    console.log("*******************");
+    console.log("*******************");
+    console.log("*******************");
+    console.log("StudentRosterAttendance = ", isParticipantFileUploaded);
+  }, [isParticipantFileUploaded]);
+
+  useEffect(() => {
+    isParticipantFileUploaded && fetch_attendance_status();
+  }, [isParticipantFileUploaded]);
+
+  async function fetch_attendance_status() {
+    const response = await getAttendanceResults();
+    console.log("fetch_attendance_status", response);
+    setStudentAttendance(response);
   }
 
-  return <Accordion>{students}</Accordion>;
+  return (
+    <Accordion>
+      {studentAttendance?.map(
+        (
+          {
+            name,
+            matchName,
+            maxSimilarityScore: score,
+            duration,
+          },
+          index
+        ) => (
+          <Accordion.Item eventKey={index} key={index}>
+            <Accordion.Header>
+              <span className="me-2">{index + 1})</span>
+              <span className="student-name">{name}</span>
+              <span
+                className="me-2 match-score"
+                style={{ color: !(score > 0.6) && "red" }}
+              >
+                {(score * 100).toFixed(0)}%
+              </span>
+              <span
+                className="me-2 duration"
+                style={{ color: !(score > 0.6) && "red" }}
+              >
+                {duration}
+              </span>
+              <span
+                className={`me-2 ${
+                  score > 0.6 ? "checkmark" : "cross"
+                }`}
+              >
+                {score > 0.6 ? "✅" : "❌"}
+              </span>
+            </Accordion.Header>
+            <Accordion.Body>
+              <p>Match Name: {matchName}</p>
+              <p>Match Score: {(score * 100).toFixed(0)}%</p>
+              <p>
+                Match Status: {score > 0.6 ? "Present" : "Absent"}
+              </p>
+              <p>Duration: {duration} minutes</p>
+            </Accordion.Body>
+          </Accordion.Item>
+        )
+      )}
+    </Accordion>
+  );
 }
 
 export default StudentRosterAttendance;

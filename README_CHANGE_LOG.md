@@ -4,7 +4,12 @@
 - DONE = Add route for /api/students & more
 - DONE = Adjust choose file & upload file button functionality
 
-- Add route for /api/participants
+- DONE = Add route for /api/participants
+- DONE = Add route for /api/attendance
+- DONE = Add fuzzy logic match logic
+
+- add threshold logic to render attendance status (currently hard coded in student roster attendance)
+- return attendance_status from match logic in server (not on front-end)
 
 - adjust student container to conditionally render properly
 - refactor manage_token_user_id utility

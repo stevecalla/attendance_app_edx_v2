@@ -4,7 +4,7 @@ import StudentPlaceholder from "../studentPlaceholder";
 import StudentRoster from "../studentRoster";
 import StudentRosterAttendace from "../studentRosterAttendance";
 
-function StudentContainer({ isStudentFileUploaded }) {
+function StudentContainer({ isStudentFileUploaded, isParticipantFileUploaded }) {
   return (
     <div
       id="student-container"
@@ -12,7 +12,7 @@ function StudentContainer({ isStudentFileUploaded }) {
     >
       <StudentPlaceholder />
       <StudentRoster isStudentFileUploaded={isStudentFileUploaded} />
-      <StudentRosterAttendace />
+      <StudentRosterAttendace isParticipantFileUploaded={isParticipantFileUploaded} />
     </div>
   );
 }

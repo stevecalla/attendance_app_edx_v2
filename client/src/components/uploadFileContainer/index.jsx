@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import UploadFileSelector from "../uploadFileSelector/index.jsx";
 import UploadFileButton from "../uploadFileButton";
 
-function UploadFileContainer({ isStudentFileUploaded, setIsStudentFileUploaded }) {
+function UploadFileContainer({ isStudentFileUploaded, setIsStudentFileUploaded, isParticipantFileUploaded, setIsParticipantFileUploaded }) {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -19,6 +19,8 @@ function UploadFileContainer({ isStudentFileUploaded, setIsStudentFileUploaded }
         setSelectedFiles={setSelectedFiles}
         isStudentFileUploaded={isStudentFileUploaded}
         setIsStudentFileUploaded={setIsStudentFileUploaded}
+        isParticipantFileUploaded={isParticipantFileUploaded}
+        setIsParticipantFileUploaded={setIsParticipantFileUploaded}
       />
 
       <UploadFileButton 
@@ -27,6 +29,7 @@ function UploadFileContainer({ isStudentFileUploaded, setIsStudentFileUploaded }
         selectedFiles={selectedFiles} 
         setSelectedFiles={setSelectedFiles}
         setIsStudentFileUploaded={setIsStudentFileUploaded}
+        setIsParticipantFileUploaded={setIsParticipantFileUploaded}
       />
 
     </div>

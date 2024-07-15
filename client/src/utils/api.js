@@ -1,52 +1,5 @@
 import { getLocalStorageItem } from "./local-storage";
 
-// SECTION SAVE FILE UPLOAD CONTENT = POST
-export const saveFileContentRoute = async (fileContent, route) => {
-  const token = await getLocalStorageItem("attendance_token");
-
-  try {
-    const response = await fetch(`/api/${route}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "text/plain",
-        Authorization: `Bearer ${token}`,
-      },
-      body: fileContent,
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    return response;
-  } catch (error) {
-    console.error("Error executing function:", error);
-  }
-};
-
-// SECTION FETCH STUDENT ROSTER = GET
-export const getStudentRoster = async () => {
-  const token = await getLocalStorageItem("attendance_token");
-
-  try {
-    const response = await fetch(`/api/students`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data.result;
-  } catch (error) {
-    console.error("Error executing function:", error);
-  }
-};
-
 // SECTION FETCH USER ID / TOKEN = GET
 export const generateTokenUserId = async () => {
   try {
@@ -113,3 +66,74 @@ export const saveUserIDToRedis = async () => {
     throw error;
   }
 }
+
+// SECTION SAVE FILE UPLOAD CONTENT = POST
+export const saveFileContentRoute = async (fileContent, route) => {
+  const token = await getLocalStorageItem("attendance_token");
+
+  try {
+    const response = await fetch(`/api/${route}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain",
+        Authorization: `Bearer ${token}`,
+      },
+      body: fileContent,
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response;
+  } catch (error) {
+    console.error("Error executing function:", error);
+  }
+};
+
+// SECTION FETCH STUDENT ROSTER = GET
+export const getStudentRoster = async () => {
+  const token = await getLocalStorageItem("attendance_token");
+
+  try {
+    const response = await fetch(`/api/students`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.result;
+  } catch (error) {
+    console.error("Error executing function:", error);
+  }
+};
+
+// SECTION FETCH ATTENDANCE = GET
+export const getAttendanceResults = async () => {
+  const token = await getLocalStorageItem("attendance_token");
+
+  try {
+    const response = await fetch("/api/attendance", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data.result;
+  } catch (error) {
+    console.error("Error executing function:", error);
+  }
+};

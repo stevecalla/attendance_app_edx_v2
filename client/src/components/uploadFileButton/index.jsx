@@ -15,6 +15,7 @@ function UploadFileButton({
   selectedFiles,
   setSelectedFiles,
   setIsStudentFileUploaded,
+  setIsParticipantFileUploaded,
 }) {
   
   useEffect(() => {
@@ -26,6 +27,10 @@ function UploadFileButton({
     console.log("handleFileUpload = ", selectedFiles[0]);
 
     const isTokenExpired = await validateToken(); // ensure user-id/token is valid
+
+    if (isTokenExpired === undefined) {
+      await generateToken();
+    }
 
     if (isTokenExpired) {
       await generateToken();
@@ -49,34 +54,23 @@ function UploadFileButton({
     const route = await determineRoute(fileContent); // students or participants
     console.log("route = ", route);
 
-    // const token = "";
     const response = await saveFileContent(fileContent, route);
 
-    let studentList = [];
-
-    if (response) {
+    if (response && route === "students") {
       setIsStudentFileUploaded(true);
+      setIsDisabled(true);
+      setTimeout(() => {
+        alert("Student roster saved successfully.");
+      }, 200);
+      return;
+    }
 
-      if (studentList?.length === 0) {
-        alert("Please upload student roster before Zoom participants.");
-        // clearChooseFileContent();
-        // disableUploadButton();
-        setIsDisabled(true);
-        return;
-      }
-
-      if (studentList?.length > 0) {
-        // await render_upload_status(route);
-        // await render_student_stats(route, token);
-        // clearChooseFileContent();
-        // disableUploadButton();
-        // await logPageEvent(event, token);
-
-        setTimeout(() => {
-          alert("File saved successfully.");
-        }, 200);
-      }
-
+    if (response && route === "participants") {
+      setIsParticipantFileUploaded(true);
+      setIsDisabled(true);
+      setTimeout(() => {
+        alert("Participants saved successfully.");
+      }, 200);
       return;
     }
   };
@@ -96,10 +90,10 @@ function UploadFileButton({
     return route;
   };
 
-  const saveFileContent = async (token = "", fileContent, route) => {
-    console.log("save file content = ", token, fileContent, route);
+  const saveFileContent = async (fileContent, route) => {
+    console.log("save file content = ", fileContent, route);
     try {
-      const response = await saveFileContentRoute(token, fileContent, route);
+      const response = await saveFileContentRoute(fileContent, route);
 
       console.log("saveFileContentRoute route = ", response);
 

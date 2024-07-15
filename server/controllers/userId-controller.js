@@ -1,9 +1,6 @@
-const express = require('express');
-const router = express.Router();
-
 const { findExactRedisKey } = require("./redis_store.js");
-const { signToken } = require('../utilities/auth');
-const { generate_user_id, save_to_redis } = require('../utilities/manage_user_id');
+const { signToken } = require('../utilities/auth/index.js');
+const { generate_user_id, save_to_redis } = require('../utilities/manage_user_id/index.js');
 
 // Define a GET route with a URL parameter
 // get, /api/user-id/:token

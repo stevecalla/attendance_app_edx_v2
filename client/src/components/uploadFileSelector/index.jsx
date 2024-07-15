@@ -13,23 +13,28 @@ function UploadFileSelector({
   selectedFiles,
   isStudentFileUploaded,
   setIsStudentFileUploaded,
+  isParticipantFileUploaded,
+  setIsParticipantFileUploaded,
 }) {
   const fileInputRef = useRef(null);
   const [alertStyle, setAlertStyle] = useState(true);
 
   useEffect(() => {
-    if (isStudentFileUploaded) {
+    if (isStudentFileUploaded || isParticipantFileUploaded) {
       fileInputRef.current.value = "";
       setSelectedFiles([]); // Clear selected files state
       setIsDisabled(true); // Disable the upload file button
     }
     setIsStudentFileUploaded(false);
+    setIsParticipantFileUploaded(false);
   }, [
     setIsDisabled,
     selectedFiles,
     setSelectedFiles,
     isStudentFileUploaded,
     setIsStudentFileUploaded,
+    isParticipantFileUploaded,
+    setIsParticipantFileUploaded
   ]);
 
   useEffect(() => {
@@ -55,6 +60,10 @@ function UploadFileSelector({
 
   const handleSelectFile = async (event) => {
     const isTokenExpired = await validateToken(); // ensure user-id/token is valid
+
+    if (isTokenExpired === undefined) {
+      await generateToken();
+    }
 
     if (isTokenExpired) {
       await generateToken();

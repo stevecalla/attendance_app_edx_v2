@@ -1,6 +1,3 @@
-// const express = require('express');
-// const router = express.Router();
-
 const { getFromRedis } = require("./redis_store.js"); // get data from redis store
 const { storeStudentResults } = require("../utilities/store_data_in_redis/store_student_data.js");
 const { get_user_id_from_header } = require('../utilities/manage_user_id');
