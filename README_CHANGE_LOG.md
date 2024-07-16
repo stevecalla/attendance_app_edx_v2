@@ -12,6 +12,8 @@
 - DONE = replace placeholder with react bootstrap component
 - DONE = align body of attendance accordian to same width & make font smaller
 
+- add the get attendance feature
+
 - add threshold logic to render attendance status (currently hard coded in student roster attendance)
 - return attendance_status from match logic in server (not on front-end)
 - refactor manage_token_user_id utility

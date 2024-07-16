@@ -14,6 +14,12 @@ function UploadFileSelector({
 }) {
   const [alertStyle, setAlertStyle] = useState(true);
 
+  // focuses the file selector element when page loads
+  useEffect(() => {
+    fileInputRef.current.focus();
+  }, [fileInputRef])
+  
+
   const handleClick = async () => {
     // Setting fileInputRef.current.value = "" onClick ensures if the user clicks
     // the "Choose File" button for the same file consecutively React will execute
