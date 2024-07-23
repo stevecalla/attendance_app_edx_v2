@@ -21,10 +21,13 @@
 
 ### TODO
 - add the get attendance feature
+- add instructions
+- log page events
+- pwa offline
+
 - refactor manage_token_user_id utility
 - refactor file structure = adjust index.jsx to name of component
   `https://dev.to/vyan/mastering-react-a-developers-guide-to-structuring-your-frontend-code-45a5?context=digest`
-- add functionality to upload status component
-- add instructions
-- pwa offline
-- log page events
+- launch in heroku; check the app
+- launch in render
+- add redis in render = can I se the redis data?
