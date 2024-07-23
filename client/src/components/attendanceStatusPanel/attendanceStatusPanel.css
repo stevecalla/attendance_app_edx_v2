@@ -1,0 +1,22 @@
+/* //SECTION STATUS TAB / CONTAINER */
+.status-text-area {
+  height: 200px;
+}
+
+.copy-status-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.bi-copy.custom-font-size {
+  font-size: 24px;
+}
+
+.bi-copy.disabled {
+  color: gray;
+  cursor: not-allowed;
+  pointer-events: none; /* Prevent interaction */
+}

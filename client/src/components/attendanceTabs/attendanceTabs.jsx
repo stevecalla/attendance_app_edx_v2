@@ -1,8 +1,7 @@
-// import "./attendanceTabs.css";
-
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import AttendancePanel from "../attendancePanel/attendancePanel";
+import AttendanceStatusPanel from "../attendanceStatusPanel/attendanceStatusPanel";
 
 function AttendanceTabs() {
   return (
@@ -14,7 +13,7 @@ function AttendanceTabs() {
         </Tab>
 
         <Tab eventKey="status" title="Status">
-          Tab content for Status
+          <AttendanceStatusPanel />
         </Tab>
         
       </Tabs>
