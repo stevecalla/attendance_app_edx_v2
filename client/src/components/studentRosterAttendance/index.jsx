@@ -1,68 +1,76 @@
-import { useEffect, useState } from "react";
-import { getAttendanceResults } from "../../utils/api";
+import { useEffect, useState } from 'react'
+import { getAttendanceResults } from '../../utils/api'
 
-import Accordion from "react-bootstrap/Accordion";
-import "./studentRosterAttendance.css";
+import Accordion from 'react-bootstrap/Accordion'
+import './studentRosterAttendance.css'
 
-function StudentRosterAttendance({ isParticipantFileUploaded }) {
-  const [studentAttendance, setStudentAttendance] = useState([]);
+function StudentRosterAttendance ({
+  isParticipantFileUploaded,
+  matchThreshold,
+  minutesThreshold
+}) {
+  const [studentAttendance, setStudentAttendance] = useState([])
 
   useEffect(() => {
-    isParticipantFileUploaded && fetch_attendance_status();
-  }, [isParticipantFileUploaded]);
+    isParticipantFileUploaded && fetch_attendance_status()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isParticipantFileUploaded])
 
-  async function fetch_attendance_status() {
-    const response = await getAttendanceResults();
+  async function fetch_attendance_status () {
+    const response = await getAttendanceResults(matchThreshold, minutesThreshold);
+    console.log(response);
     setStudentAttendance(response);
   }
 
   return (
     <Accordion>
       {studentAttendance?.map(
-        ({ name, matchName, maxSimilarityScore: score, duration }, index) => (
+        ({ name, matchName, maxSimilarityScore: score, duration, isInAttendance }, index) => (
           <Accordion.Item eventKey={index} key={index}>
             <Accordion.Header>
-              <span className="me-2">{index + 1})</span>
-              <span className="student-name">{name}</span>
+              <span className='me-2'>{index + 1})</span>
+              <span className='student-name'>{name}</span>
               <span
-                className="me-2 match-score"
-                style={{ color: !(score > 0.6) && "red" }}
+                className='me-2 match-score'
+                style={{ color: !isInAttendance && 'red' }}
               >
-                {(score * 100).toFixed(0)}%
+                {score}
               </span>
               <span
-                className="me-2 duration"
-                style={{ color: !(score > 0.6) && "red" }}
+                className='me-2 duration'
+                style={{ color: !isInAttendance && 'red' }}
               >
                 {duration}
               </span>
-              <span className={`me-2 ${score > 0.6 ? "checkmark" : "cross"}`}>
-                {score > 0.6 ? "✅" : "❌"}
+              <span className={`me-2 ${isInAttendance ? 'checkmark' : 'cross'}`}>
+                {isInAttendance ? '✅' : '❌'}
               </span>
             </Accordion.Header>
             <Accordion.Body>
-              <p className="mb-1">
-                <span className="custom-row-label">Match Name:</span>
-                <span className="mx-2 mb-1">{matchName}</span>
+              <p className='mb-1'>
+                <span className='custom-row-label'>Match Name:</span>
+                <span className='mx-2 mb-1'>{matchName}</span>
               </p>
-              <p className="mb-1">
-                <span className="custom-row-label">Match Score:</span>
-                <span className="mx-2">{(score * 100).toFixed(0)}%</span>
+              <p className='mb-1'>
+                <span className='custom-row-label'>Match Score:</span>
+                <span className='mx-2'>{score}</span>
               </p>
-              <p className="mb-1">
-                <span className="custom-row-label">Match Status:</span>
-                <span className="mx-2">{score > 0.6 ? "Present" : "Absent"}</span>
+              <p className='mb-1'>
+                <span className='custom-row-label'>Match Status:</span>
+                <span className='mx-2'>
+                  {isInAttendance ? 'Present' : 'Absent'}
+                </span>
               </p>
-              <p className="mb-1">
-                <span className="custom-row-label">Duration:</span>
-                <span className="mx-2">{duration} minutes</span>
+              <p className='mb-1'>
+                <span className='custom-row-label'>Duration:</span>
+                <span className='mx-2'>{duration} minutes</span>
               </p>
             </Accordion.Body>
           </Accordion.Item>
         )
       )}
     </Accordion>
-  );
+  )
 }
 
-export default StudentRosterAttendance;
+export default StudentRosterAttendance

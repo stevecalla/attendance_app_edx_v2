@@ -6,7 +6,12 @@ async function getAttendanceData(req, res) {
   try {
     const user_id = await get_user_id_from_header(req);
 
-    const result = await fuzzyLogicMatch(user_id);
+    console.log('\n*******************');
+    console.log('get attendance post = ', req.body);
+    const { matchThreshold, minutesThreshold } = req.body;
+    console.log('*******************\n');
+
+    const result = await fuzzyLogicMatch(user_id, matchThreshold, minutesThreshold);
 
     res.json({ result });
 

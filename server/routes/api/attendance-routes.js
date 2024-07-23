@@ -4,6 +4,6 @@ const {
   getAttendanceData,
 } = require('../../controllers/attendance-controller');
 
-router.route('/').get(getAttendanceData); // get, /api/attendance
+router.route('/').post(getAttendanceData); // get, /api/attendance
 
 module.exports = router;

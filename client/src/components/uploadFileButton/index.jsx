@@ -24,7 +24,8 @@ function UploadFileButton({
   }, [selectedFiles]);
 
   // UPLOAD FILE
-  const handleFileUpload = async (event) => {
+  // const handleFileUpload = async (event) => { //fix use when activating log event
+  const handleFileUpload = async () => {
     console.log("handleFileUpload = ", selectedFiles[0]);
 
     const isTokenExpired = await validateToken(); // ensure user-id/token is valid

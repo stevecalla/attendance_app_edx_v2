@@ -115,15 +115,46 @@ export const getStudentRoster = async () => {
 };
 
 // SECTION FETCH ATTENDANCE = GET
-export const getAttendanceResults = async () => {
+// export const getAttendanceResults = async () => {
+//   const token = await getLocalStorageItem("attendance_token");
+
+//   try {
+//     const response = await fetch("/api/attendance", {
+//       method: "GET",
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+
+//     const data = await response.json();
+
+//     return data.result;
+//   } catch (error) {
+//     console.error("Error executing function:", error);
+//   }
+// };
+
+// SECTION FETCH ATTENDANCE = GET
+export const getAttendanceResults = async (matchThreshold, minutesThreshold) => {
   const token = await getLocalStorageItem("attendance_token");
+
+  const requestBody = {
+    matchThreshold: matchThreshold,
+    minutesThreshold: minutesThreshold,
+  };
 
   try {
     const response = await fetch("/api/attendance", {
-      method: "GET",
+      method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",  // Specify content type as JSON
       },
+      body: JSON.stringify(requestBody),  // Convert JavaScript object to JSON string
     });
 
     if (!response.ok) {
