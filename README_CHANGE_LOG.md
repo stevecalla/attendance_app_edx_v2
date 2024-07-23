@@ -17,8 +17,7 @@
 - DONE = disable/enable match & minutes threshold
 - DONE = add ability to change match & minutes threshold via input
 - DONE = fix match % to send as decimal but render at whole number?
-
-- add stats to student stats components
+- DONE = add stats to student stats components
 
 
 ### TODO
