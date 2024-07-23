@@ -19,7 +19,6 @@
 - DONE = fix match % to send as decimal but render at whole number?
 - DONE = add stats to student stats components
 
-
 ### TODO
 - add the get attendance feature
 - refactor manage_token_user_id utility
