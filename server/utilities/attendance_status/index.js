@@ -36,7 +36,7 @@ async function fuzzyLogicMatch(user_id, matchThreshold, minutesThreshold) {
         maxSimilarityScore = similarity;
         matchName = participantName;
         duration = participantDuration;
-        isAMatchStatus = similarity > matchThreshold ? true : false;
+        isAMatchStatus = similarity > (matchThreshold / 100) ? true : false;
         isMinutesAboveThresholdStatus = duration > minutesThreshold ? true : false;
       }
     });

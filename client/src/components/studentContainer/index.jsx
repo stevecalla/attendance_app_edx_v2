@@ -8,7 +8,11 @@ function StudentContainer ({
   isStudentFileUploaded,
   isParticipantFileUploaded,
   matchThreshold,
-  minutesThreshold
+  minutesThreshold,
+  studentRoster,
+  setStudentRoster,
+  studentAttendance,
+  setStudentAttendance
 }) {
   return (
     <div
@@ -22,7 +26,11 @@ function StudentContainer ({
 
       {/* Show student roster if student file is uploaded */}
       {isStudentFileUploaded && (
-        <StudentRoster isStudentFileUploaded={isStudentFileUploaded} />
+        <StudentRoster
+          isStudentFileUploaded={isStudentFileUploaded}
+          studentRoster={studentRoster}
+          setStudentRoster={setStudentRoster}
+        />
       )}
 
       {/* Show attendance if participant file is uploaded but student file is not */}
@@ -31,6 +39,8 @@ function StudentContainer ({
           isParticipantFileUploaded={isParticipantFileUploaded}
           matchThreshold={matchThreshold}
           minutesThreshold={minutesThreshold}
+          studentAttendance={studentAttendance}
+          setStudentAttendance={setStudentAttendance}
         />
       )}
     </div>

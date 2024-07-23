@@ -7,42 +7,58 @@ import './studentRosterAttendance.css'
 function StudentRosterAttendance ({
   isParticipantFileUploaded,
   matchThreshold,
-  minutesThreshold
+  minutesThreshold,
+  studentAttendance,
+  setStudentAttendance
 }) {
-  const [studentAttendance, setStudentAttendance] = useState([])
-
   useEffect(() => {
     isParticipantFileUploaded && fetch_attendance_status()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isParticipantFileUploaded])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isParticipantFileUploaded, matchThreshold, minutesThreshold])
 
   async function fetch_attendance_status () {
-    const response = await getAttendanceResults(matchThreshold, minutesThreshold);
-    console.log(response);
-    setStudentAttendance(response);
+    const response = await getAttendanceResults(
+      matchThreshold,
+      minutesThreshold
+    )
+    console.log(response)
+    setStudentAttendance(response)
   }
 
   return (
     <Accordion>
       {studentAttendance?.map(
-        ({ name, matchName, maxSimilarityScore: score, duration, isInAttendance }, index) => (
+        (
+          {
+            name,
+            matchName,
+            maxSimilarityScore: score,
+            duration,
+            isInAttendance,
+            isAMatchStatus,
+            isMinutesAboveThresholdStatus
+          },
+          index
+        ) => (
           <Accordion.Item eventKey={index} key={index}>
             <Accordion.Header>
               <span className='me-2'>{index + 1})</span>
               <span className='student-name'>{name}</span>
               <span
                 className='me-2 match-score'
-                style={{ color: !isInAttendance && 'red' }}
+                style={{ color: !isAMatchStatus && 'red' }}
               >
                 {score}
               </span>
               <span
                 className='me-2 duration'
-                style={{ color: !isInAttendance && 'red' }}
+                style={{ color: !isMinutesAboveThresholdStatus && 'red' }}
               >
                 {duration}
               </span>
-              <span className={`me-2 ${isInAttendance ? 'checkmark' : 'cross'}`}>
+              <span
+                className={`me-2 ${isInAttendance ? 'checkmark' : 'cross'}`}
+              >
                 {isInAttendance ? '✅' : '❌'}
               </span>
             </Accordion.Header>
@@ -57,13 +73,34 @@ function StudentRosterAttendance ({
               </p>
               <p className='mb-1'>
                 <span className='custom-row-label'>Match Status:</span>
-                <span className='mx-2'>
-                  {isInAttendance ? 'Present' : 'Absent'}
+                <span
+                  className='mx-2'
+                  style={{ color: !isAMatchStatus && 'red' }}
+                >
+                  {isAMatchStatus ? 'Present' : 'Absent'}
                 </span>
               </p>
               <p className='mb-1'>
                 <span className='custom-row-label'>Duration:</span>
                 <span className='mx-2'>{duration} minutes</span>
+              </p>
+              <p className='mb-1'>
+                <span className='custom-row-label'>Duration Status:</span>
+                <span
+                  className='mx-2'
+                  style={{ color: !isMinutesAboveThresholdStatus && 'red' }}
+                >
+                  {isMinutesAboveThresholdStatus ? 'Present' : 'Absent'}
+                </span>
+              </p>
+              <p className='mb-1'>
+                <span className='custom-row-label'>Attendance:</span>
+                <span
+                  className='mx-2'
+                  style={{ color: !isInAttendance && 'red' }}
+                >
+                  {isInAttendance ? 'Present' : 'Absent'}
+                </span>
               </p>
             </Accordion.Body>
           </Accordion.Item>
