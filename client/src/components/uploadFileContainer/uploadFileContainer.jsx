@@ -1,15 +1,20 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from 'react'
 
-import UploadFileSelector from "../uploadFileSelector/index.jsx";
-import UploadFileButton from "../uploadFileButton";
+import UploadFileSelector from '../uploadFileSelector/uploadFileSelector';
+import UploadFileButton from '../uploadFileButton/uploadFileButton';
 
-function UploadFileContainer({ isStudentFileUploaded, setIsStudentFileUploaded, isParticipantFileUploaded, setIsParticipantFileUploaded }) {
-  const [selectedFiles, setSelectedFiles] = useState([]);
-  const [isDisabled, setIsDisabled] = useState(true);
-  const fileInputRef = useRef(null);
+function UploadFileContainer ({
+  isStudentFileUploaded,
+  setIsStudentFileUploaded,
+  isParticipantFileUploaded,
+  setIsParticipantFileUploaded
+}) {
+  const [selectedFiles, setSelectedFiles] = useState([])
+  const [isDisabled, setIsDisabled] = useState(true)
+  const fileInputRef = useRef(null)
 
   return (
-    <div className="input-group mb-3">
+    <div className='input-group mb-3'>
       <UploadFileSelector
         setIsDisabled={setIsDisabled}
         selectedFiles={selectedFiles}
@@ -21,17 +26,17 @@ function UploadFileContainer({ isStudentFileUploaded, setIsStudentFileUploaded, 
         fileInputRef={fileInputRef}
       />
 
-      <UploadFileButton 
-        isDisabled={isDisabled} 
+      <UploadFileButton
+        isDisabled={isDisabled}
         setIsDisabled={setIsDisabled}
-        selectedFiles={selectedFiles} 
+        selectedFiles={selectedFiles}
         setSelectedFiles={setSelectedFiles}
         setIsStudentFileUploaded={setIsStudentFileUploaded}
         setIsParticipantFileUploaded={setIsParticipantFileUploaded}
         fileInputRef={fileInputRef}
       />
     </div>
-  );
+  )
 }
 
-export default UploadFileContainer;
+export default UploadFileContainer

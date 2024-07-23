@@ -1,6 +1,6 @@
 import "./attendance.css";
 
-import AttendanceTabs from "../../components/attendanceTabs";
+import AttendanceTabs from "../../components/attendanceTabs/attendanceTabs";
 
 function Attendance() {
   return (

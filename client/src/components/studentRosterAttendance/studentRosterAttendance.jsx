@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { getAttendanceResults } from '../../utils/api'
 
 import Accordion from 'react-bootstrap/Accordion'

@@ -2,10 +2,10 @@ import { useState } from "react";
 
 import "./attendancePanel.css";
 
-import UploadStatus from "../uploadStatus";
-import UploadFileContainer from "../uploadFileContainer";
-import StudentStats from "../studentStats";
-import StudentContainer from "../studentContainer";
+import UploadStatus from "../uploadStatus/uploadStatus";
+import UploadFileContainer from "../uploadFileContainer/uploadFileContainer";
+import StudentStats from "../studentStats/studentStats";
+import StudentContainer from "../studentContainer/studentContainer";
 
 function AttendancePanel() {
   const [isStudentFileUploaded, setIsStudentFileUploaded] = useState(false);

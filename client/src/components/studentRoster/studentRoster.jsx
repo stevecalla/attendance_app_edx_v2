@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { getStudentRoster } from '../../utils/api'
 
 import Accordion from 'react-bootstrap/Accordion'

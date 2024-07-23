@@ -2,7 +2,7 @@
 
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import AttendancePanel from "../attendancePanel";
+import AttendancePanel from "../attendancePanel/attendancePanel";
 
 function AttendanceTabs() {
   return (

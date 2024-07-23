@@ -20,7 +20,11 @@
 - DONE = add stats to student stats components
 
 ### TODO
-- add the get attendance feature
+- add get attendance ui/ux
+- add get attendance functionality
+- add copy button functionality
+
+
 - add instructions
 - log page events
 - pwa offline

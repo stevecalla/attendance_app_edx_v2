@@ -1,8 +1,8 @@
-import './studentContainer.css'
+import './studentContainer.css';
 
-import StudentPlaceholder from '../studentPlaceholder'
-import StudentRoster from '../studentRoster'
-import StudentRosterAttendance from '../studentRosterAttendance'
+import StudentPlaceholder from '../studentPlaceholder/studentPlaceholder';
+import StudentRoster from '../studentRoster/studentRoster';
+import StudentRosterAttendance from '../studentRosterAttendance/studentRosterAttendance';
 
 function StudentContainer ({
   isStudentFileUploaded,
