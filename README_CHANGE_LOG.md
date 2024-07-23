@@ -20,7 +20,9 @@
 - DONE = add stats to student stats components
 
 ### TODO
-- add get attendance ui/ux
+- DONE = add status ui/ux
+
+- refactor status ui
 - add get attendance functionality
 - add copy button functionality
 
