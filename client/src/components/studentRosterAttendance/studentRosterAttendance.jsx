@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
-import { getAttendanceResults } from '../../utils/api'
+import { useEffect } from 'react';
+import { getAttendanceResults } from '../../utils/api';
 
-import Accordion from 'react-bootstrap/Accordion'
-import './studentRosterAttendance.css'
+import Accordion from 'react-bootstrap/Accordion';
+import './studentRosterAttendance.css';
 
 function StudentRosterAttendance ({
   isParticipantFileUploaded,

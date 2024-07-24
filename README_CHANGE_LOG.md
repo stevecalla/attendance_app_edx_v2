@@ -21,6 +21,9 @@
 
 ### TODO
 - DONE = add status ui/ux
+- DONE = refactor studentStats to a single return element
+- DONE = refactor studentStats to bootstrap react accordian
+- DONe = presentCount / absentCount variables?
 
 - refactor status ui
 - add get attendance functionality

@@ -3,6 +3,10 @@
   font-size: 12px;
 }
 
+.custom-border {
+  border-color: transparent;
+}
+
 /* //SECTION Media Queries */
 @media screen and (max-width: 600px) {
   .floating-input {
