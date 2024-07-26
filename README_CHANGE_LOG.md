@@ -29,6 +29,7 @@
 - DONE = add copy button functionality
 
 
+- adjust upload status icons to change from X to check mark
 - add instructions
 - adjust stats so present / absent are 0
 - log page events
