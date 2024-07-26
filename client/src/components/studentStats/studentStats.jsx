@@ -10,7 +10,7 @@ function StudentStats ({
   studentRoster,
   studentAttendance
 }) {
-  let studentCount = studentAttendance.length || studentRoster.length || 0
+  let studentCount = studentAttendance?.length || studentRoster?.length || 0
   let presentCount = 0
   let absentCount = 0
 

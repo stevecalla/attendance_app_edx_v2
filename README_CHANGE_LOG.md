@@ -18,19 +18,19 @@
 - DONE = add ability to change match & minutes threshold via input
 - DONE = fix match % to send as decimal but render at whole number?
 - DONE = add stats to student stats components
-
-### TODO
 - DONE = add status ui/ux
 - DONE = refactor studentStats to a single return element
 - DONE = refactor studentStats to bootstrap react accordian
 - DONe = presentCount / absentCount variables?
 
-- refactor status ui
-- add get attendance functionality
-- add copy button functionality
+### 7/25/24
+- DONE = refactor status ui to text area
+- DONE = add get attendance functionality
+- DONE = add copy button functionality
 
 
 - add instructions
+- adjust stats so present / absent are 0
 - log page events
 - pwa offline
 

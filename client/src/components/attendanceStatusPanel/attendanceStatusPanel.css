@@ -1,6 +1,7 @@
 /* //SECTION STATUS TAB / CONTAINER */
 .status-text-area {
-  height: 200px;
+  height: 200px!important;
+  /* border-color: red; */
 }
 
 .copy-status-button {
