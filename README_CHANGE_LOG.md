@@ -28,10 +28,13 @@
 - DONE = add get attendance functionality
 - DONE = add copy button functionality
 
+### 7/26/24
+- DONE = adjust upload status icons to change from X to check mark
 
-- adjust upload status icons to change from X to check mark
-- add instructions
 - adjust stats so present / absent are 0
+
+- upload student file before participant file
+- add instructions
 - log page events
 - pwa offline
 

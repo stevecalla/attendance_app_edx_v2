@@ -23,7 +23,10 @@ function AttendancePanel ({
 
   return (
     <div className='m-4'>
-      <UploadStatus />
+      <UploadStatus 
+        isStudentFileUploaded={isStudentFileUploaded}
+        isParticipantFileUploaded={isParticipantFileUploaded}
+      />
       <UploadFileContainer
         isStudentFileUploaded={isStudentFileUploaded}
         setIsStudentFileUploaded={setIsStudentFileUploaded}
