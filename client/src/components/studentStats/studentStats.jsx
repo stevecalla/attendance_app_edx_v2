@@ -1,5 +1,5 @@
-import Accordion from 'react-bootstrap/Accordion'
-import './studentStats.css'
+import Accordion from 'react-bootstrap/Accordion';
+import './studentStats.css';
 
 function StudentStats ({
   matchThreshold,
@@ -10,9 +10,9 @@ function StudentStats ({
   studentRoster,
   studentAttendance
 }) {
-  let studentCount = studentAttendance?.length || studentRoster?.length || 0
-  let presentCount = 0
-  let absentCount = 0
+  let studentCount = studentAttendance?.length || studentRoster?.length || 0;
+  let presentCount = 0;
+  let absentCount = 0;
 
   for (let i = 0; i < studentAttendance?.length; i++) {
     const { isInAttendance } = studentAttendance[i]
@@ -39,14 +39,14 @@ function StudentStats ({
     },
     {
       id: 'present-count',
-      value: presentCount || '',
+      value: isParticipantFileUploaded ? presentCount : '',
       label: 'Present',
       placeholder: 'Present',
       disabled: true
     },
     {
       id: 'absent-count',
-      value: absentCount || '',
+      value: isParticipantFileUploaded ? absentCount: '',
       label: 'Absent',
       placeholder: 'Absent',
       disabled: true

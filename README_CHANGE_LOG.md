@@ -30,17 +30,17 @@
 
 ### 7/26/24
 - DONE = adjust upload status icons to change from X to check mark
-
-- adjust stats so present / absent are 0
+- DONE = adjust stats so present / absent are 0
 
 - upload student file before participant file
 - add instructions
 - log page events
 - pwa offline
+- use context for attendance data?
 
 - refactor manage_token_user_id utility
 - refactor file structure = adjust index.jsx to name of component
   `https://dev.to/vyan/mastering-react-a-developers-guide-to-structuring-your-frontend-code-45a5?context=digest`
 - launch in heroku; check the app
 - launch in render
-- add redis in render = can I se the redis data?
+- add redis in render = can I see the redis data in render?
