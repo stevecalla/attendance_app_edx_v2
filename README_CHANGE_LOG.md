@@ -31,8 +31,8 @@
 ### 7/26/24
 - DONE = adjust upload status icons to change from X to check mark
 - DONE = adjust stats so present / absent are 0
+- DONE = upload student file before participant file
 
-- upload student file before participant file
 - add instructions
 - log page events
 - pwa offline

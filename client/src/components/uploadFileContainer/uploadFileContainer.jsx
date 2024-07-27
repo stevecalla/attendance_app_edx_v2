@@ -31,6 +31,7 @@ function UploadFileContainer ({
         setIsDisabled={setIsDisabled}
         selectedFiles={selectedFiles}
         setSelectedFiles={setSelectedFiles}
+        isStudentFileUploaded={isStudentFileUploaded}
         setIsStudentFileUploaded={setIsStudentFileUploaded}
         setIsParticipantFileUploaded={setIsParticipantFileUploaded}
         fileInputRef={fileInputRef}

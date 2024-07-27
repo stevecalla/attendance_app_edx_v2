@@ -14,6 +14,7 @@ function UploadFileButton({
   setIsDisabled,
   selectedFiles,
   setSelectedFiles,
+  isStudentFileUploaded,
   setIsStudentFileUploaded,
   setIsParticipantFileUploaded,
   fileInputRef,
@@ -67,6 +68,11 @@ function UploadFileButton({
         setTimeout(() => {
           alert("Student roster saved successfully.");
         }, 200);
+
+      } else if (!isStudentFileUploaded) {
+        alert("Upload student roster before participant roster, please.");
+        return;
+
       } else if (response && route === "participants") {
         setIsParticipantFileUploaded(true);
         setIsStudentFileUploaded(false);
