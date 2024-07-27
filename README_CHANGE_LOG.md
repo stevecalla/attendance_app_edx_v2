@@ -33,7 +33,15 @@
 - DONE = adjust stats so present / absent are 0
 - DONE = upload student file before participant file
 
-- add instructions
+### 7/27/24
+- DONE = add instructions
+- DONE = add code library
+
+- scroll on instructions & code library?
+- add delete button to allow user to delete roster/participants
+
+- set flavicon
+- add readme
 - log page events
 - pwa offline
 - use context for attendance data?

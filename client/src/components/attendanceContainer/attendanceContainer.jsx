@@ -1,17 +1,19 @@
 import { useState } from 'react';
 
+import Card from 'react-bootstrap/Card';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import AttendancePanel from '../attendancePanel/attendancePanel';
 import AttendanceStatusPanel from '../attendanceStatusPanel/attendanceStatusPanel';
 
-function AttendanceTabs() {
+function AttendanceContainer() {
   const [isParticipantFileUploaded, setIsParticipantFileUploaded] =
     useState(false);
   const [studentAttendance, setStudentAttendance] = useState([]);  
 
   return (
-    <section className='card attendance-card'>
+    <Card className='attendance-card'>
+    {/* <section className='card attendance-card'> */}
       <Tabs defaultActiveKey='attendance' id='' className='m-3 mb-1' fill>
         <Tab eventKey='attendance' title='Attendance'>
           <AttendancePanel
@@ -32,8 +34,10 @@ function AttendanceTabs() {
           />
         </Tab>
       </Tabs>
-    </section>
+    {/* </section> */}
+    </Card>
+
   )
 }
 
-export default AttendanceTabs
+export default AttendanceContainer

@@ -1,0 +1,42 @@
+/* //SECTION INSTRUCTION / CODE CONTAINER */
+.instruction-card,
+.code-card,
+.custom-card {
+  width: 100%;
+  height: 48%;
+  /* margin-left: 8px; */
+  overflow-y: scroll;
+}
+
+/* CODE STYLE */
+code {
+  color: black;
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+}
+
+/* BOOTCAMP LOGIN */
+/* ADD BLUE COLOR TO THE LOGIN LINK */
+.link-color {
+  color: blue;
+}
+
+/* //SECTION POSITION CODE COPY ICON */
+.header-title {
+  width: 90%;
+}
+
+.copy-code-button {
+  font-size: 18px;
+  /* cursor: pointer;
+  z-index: 10; */
+}
+
+.copy-code-button:hover {
+  font-size: 24px;
+  /* cursor: pointer;
+  z-index: 10; */
+}

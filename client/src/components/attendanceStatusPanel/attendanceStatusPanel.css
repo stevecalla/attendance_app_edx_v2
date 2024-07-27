@@ -16,8 +16,8 @@
   font-size: 24px;
 }
 
-.bi-copy.disabled {
+/* .bi-copy.disabled {
   color: gray;
   cursor: not-allowed;
-  pointer-events: none; /* Prevent interaction */
-}
+  pointer-events: none;
+} */

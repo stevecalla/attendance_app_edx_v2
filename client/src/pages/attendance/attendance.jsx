@@ -1,6 +1,7 @@
 import "./attendance.css";
 
-import AttendanceTabs from "../../components/attendanceTabs/attendanceTabs";
+import AttendanceContainer from "../../components/attendanceContainer/attendanceContainer";
+import InstructionsContainer from "../../components/instructionsContainer/instructionsContainer";
 
 function Attendance() {
   return (
@@ -8,12 +9,12 @@ function Attendance() {
 
       {/* <!-- SECTION ATTENDANCE PANEL --> */}
       <div className="sub-container">
-        <AttendanceTabs />
+        <AttendanceContainer />
       </div>
 
       {/* <!-- //SECTION RIGHT PANELS --> */}
       <div className="sub-container">
-        <p>Hello</p>
+        <InstructionsContainer />
       </div>
     </div>
   );
