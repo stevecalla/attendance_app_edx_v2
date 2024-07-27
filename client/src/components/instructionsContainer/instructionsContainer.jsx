@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 
 import "./instructionsContainer.css";
 import Card from 'react-bootstrap/Card';
@@ -9,6 +9,8 @@ import Accordion from 'react-bootstrap/Accordion';
 // import AttendanceStatusPanel from '../attendanceStatusPanel/attendanceStatusPanel';
 
 function AttendanceTabs() {
+  const [copiedIndex, setCopiedIndex] = useState(null);
+
   const bodyRefs = useRef([]);
 
   const instructions = [
@@ -329,11 +331,16 @@ function AttendanceTabs() {
     navigator.clipboard.writeText(content).then(
       () => {
         console.log('Content copied to clipboard');
+        setCopiedIndex(index); // Update the state to reflect the copied icon
       },
       (err) => {
         console.error('Failed to copy content: ', err);
       }
     );
+
+    setTimeout(() => {
+      setCopiedIndex(null);
+    }, 2000);
   }
 
   return (
@@ -368,16 +375,21 @@ function AttendanceTabs() {
                 <Accordion.Header>
                   <span className="header-title">{header}</span>
                   <span>
-                   {header !== "Video Demo" &&
-                    <i
-                      id='copy-attendance-status-button'
-                      className='bi bi-copy copy-code-button'
-                      data-bs-toggle='tooltip'
-                      data-bs-placement='top'
-                      title='Copy to clipboard'
-                      onClick={(event) => handleCopyClick(event, index)}
-                    ></i>
-                   }
+                    {header !== "Video Demo" &&
+                      <i
+                        id='copy-attendance-status-button'
+                        className={`
+                          bi 
+                          ${copiedIndex === index ? 'bi-clipboard-check' : 'bi-copy'} 
+                          ${copiedIndex === index ? 'copy-code-color-green' : 'inherit'}
+                          copy-code-button
+                        `}
+                        data-bs-toggle='tooltip'
+                        data-bs-placement='top'
+                        title='Copy to clipboard'
+                        onClick={(event) => handleCopyClick(event, index)}
+                      ></i>
+                    }
                   </span>
                 </Accordion.Header>
                 <Accordion.Body ref={(el) => (bodyRefs.current[index] = el)}>

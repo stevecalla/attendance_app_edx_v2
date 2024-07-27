@@ -31,12 +31,15 @@ code {
 
 .copy-code-button {
   font-size: 18px;
-  /* cursor: pointer;
-  z-index: 10; */
 }
 
 .copy-code-button:hover {
+  color: green;
+  font-weight: bold;
+}
+
+.copy-code-color-green {
+  color: green;
   font-size: 24px;
-  /* cursor: pointer;
-  z-index: 10; */
+  font-weight: bolder;
 }

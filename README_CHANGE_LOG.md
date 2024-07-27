@@ -36,6 +36,8 @@
 ### 7/27/24
 - DONE = add instructions
 - DONE = add code library
+- DONE = modify copy to clipboard button to show copied?
+
 
 - scroll on instructions & code library?
 - add delete button to allow user to delete roster/participants
