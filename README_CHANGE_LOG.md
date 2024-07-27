@@ -37,12 +37,10 @@
 - DONE = add instructions
 - DONE = add code library
 - DONE = modify copy to clipboard button to show copied?
-
-
 - DONE = scroll on instructions & code library?
-- when accordian opens auto scroll to get content within view window?
+- DONE = move instructions & code data to util file
 
-
+- set small gap between attendance and instructions container
 - add delete button to allow user to delete roster/participants
 - set flavicon
 - add readme

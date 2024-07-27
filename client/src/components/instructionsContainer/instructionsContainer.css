@@ -1,11 +1,12 @@
 /* //SECTION INSTRUCTION / CODE CONTAINER */
 .custom-card {
   width: 100%;
-  height: 48%;
+  height: 50%;
 }
 
 .custom-card-scroll {
   overflow-y: scroll;
+  max-height: 1000px; /* Adjust as needed */
 }
 
 /* CODE STYLE */
