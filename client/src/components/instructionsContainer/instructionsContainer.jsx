@@ -349,7 +349,7 @@ function AttendanceTabs() {
       {/* SECTION INSTRUCTIONS */}
       <Card className="custom-card">
         <Card.Header>Instructions</Card.Header>
-        <Card.Body>
+        <Card.Body className="custom-card-scroll">
           <Accordion>
             {instructions?.map(({ header, body }, index) => (
               <Accordion.Item key={index} eventKey={index}>
@@ -365,10 +365,8 @@ function AttendanceTabs() {
 
       {/*SECTION CHROME SCRIPTS CODE LIBRARY */}
       <Card className="custom-card">
-        <Card.Header>
-          Library - Chrome Scripts
-        </Card.Header>
-        <Card.Body>
+        <Card.Header> Library - Chrome Scripts </Card.Header>
+        <Card.Body className="custom-card-scroll">
           <Accordion>
             {code?.map(({ header, body }, index) => (
               <Accordion.Item key={index} eventKey={index}>

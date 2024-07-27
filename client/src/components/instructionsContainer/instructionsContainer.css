@@ -1,10 +1,10 @@
 /* //SECTION INSTRUCTION / CODE CONTAINER */
-.instruction-card,
-.code-card,
 .custom-card {
   width: 100%;
   height: 48%;
-  /* margin-left: 8px; */
+}
+
+.custom-card-scroll {
   overflow-y: scroll;
 }
 

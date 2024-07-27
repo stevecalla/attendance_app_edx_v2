@@ -39,9 +39,11 @@
 - DONE = modify copy to clipboard button to show copied?
 
 
-- scroll on instructions & code library?
-- add delete button to allow user to delete roster/participants
+- DONE = scroll on instructions & code library?
+- when accordian opens auto scroll to get content within view window?
 
+
+- add delete button to allow user to delete roster/participants
 - set flavicon
 - add readme
 - log page events
