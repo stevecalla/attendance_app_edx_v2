@@ -13,8 +13,8 @@ function AttendanceContainer() {
 
   return (
     <Card className='attendance-card'>
-    {/* <section className='card attendance-card'> */}
-      <Tabs defaultActiveKey='attendance' id='' className='m-3 mb-1' fill>
+    
+      <Tabs defaultActiveKey='attendance' className='m-3 mb-1' fill>
         <Tab eventKey='attendance' title='Attendance'>
           <AttendancePanel
             isParticipantFileUploaded={isParticipantFileUploaded}
@@ -34,7 +34,7 @@ function AttendanceContainer() {
           />
         </Tab>
       </Tabs>
-    {/* </section> */}
+      
     </Card>
 
   )

@@ -39,8 +39,8 @@
 - DONE = modify copy to clipboard button to show copied?
 - DONE = scroll on instructions & code library?
 - DONE = move instructions & code data to util file
+- DONE = set small gap between attendance and instructions container
 
-- set small gap between attendance and instructions container
 - add delete button to allow user to delete roster/participants
 - set flavicon
 - add readme

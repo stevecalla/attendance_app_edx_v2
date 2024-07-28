@@ -34,8 +34,7 @@ function InstructionsContainter() {
   }
 
   return (
-    <Card className='attendance-card'>
-
+    <>
       {/* SECTION INSTRUCTIONS */}
       <Card className="custom-card">
         <Card.Header>Instructions</Card.Header>
@@ -91,7 +90,7 @@ function InstructionsContainter() {
         </Card.Body>
       </Card>
 
-    </Card>
+    </>
   )
 }
 
