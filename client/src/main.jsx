@@ -6,13 +6,13 @@ import Home from './pages/Home';
 import Matchup from './pages/Matchup';
 import Vote from './pages/Vote';
 import NotFound from './pages/NotFound';
-import Attendance from './pages/Attendance.jsx';
+import Attendance from './pages/attendance/attendance';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    // errorElement: <NotFound />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,

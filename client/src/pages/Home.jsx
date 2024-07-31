@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllMatchups } from '../utils/api';
+import { getAllMatchups } from '../utils/api_old';
 
 const Home = () => {
   const [matchupList, setMatchupList] = useState([]);

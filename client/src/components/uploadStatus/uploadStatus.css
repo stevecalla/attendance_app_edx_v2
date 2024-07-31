@@ -1,0 +1,14 @@
+/* //SECTION UPLOAD STATUS */
+.upload-status {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.student-upload-status,
+.participant-upload-status {
+  text-align: center;
+}
+
+.status-icon {
+  margin-left: 8px;
+}

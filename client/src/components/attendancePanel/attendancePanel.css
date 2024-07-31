@@ -1,0 +1,18 @@
+/* //SECTION Media Queries */
+@media screen and (min-width: 992px) and (max-width: 1100px) {
+  .status-icon {
+    text-align: center;
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .student-upload-status,
+  .participant-upload-status {
+    text-align: center;
+  }
+
+  .status-icon {
+    margin-left: 0px;
+  }
+}

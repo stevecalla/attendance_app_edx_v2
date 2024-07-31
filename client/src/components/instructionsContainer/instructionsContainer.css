@@ -1,0 +1,46 @@
+/* //SECTION INSTRUCTION / CODE CONTAINER */
+.custom-card {
+  width: 100%;
+  height: 49%; 
+}
+
+.custom-card-scroll {
+  overflow-y: scroll;
+  max-height: 1000px;
+}
+
+/* CODE STYLE */
+code {
+  color: black;
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+}
+
+/* BOOTCAMP LOGIN */
+/* ADD BLUE COLOR TO THE LOGIN LINK */
+.link-color {
+  color: blue;
+}
+
+/* //SECTION POSITION CODE COPY ICON */
+.header-title {
+  width: 90%;
+}
+
+.copy-code-button {
+  font-size: 18px;
+}
+
+.copy-code-button:hover {
+  color: green;
+  font-weight: bold;
+}
+
+.copy-code-color-green {
+  color: green;
+  font-size: 24px;
+  font-weight: bolder;
+}
