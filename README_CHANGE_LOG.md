@@ -43,11 +43,10 @@
 
 ### 7/31/24
 - DONE = Heroku deploy. Add env variables 
-
-- alternative display for youtube video (since not available offline)
+- DONE = removed pwa for now since it wasn't working offline
+- DONE = adjust favicon path; without pwa favicon loaded from /public/favicon.ico in dev and /favicon.ico in production
 
 - server crash?
-- pwa offline
 - middleware-origin in server.js?
 
 - adjust copy icon on status tab similar to the display in the code copy ux
