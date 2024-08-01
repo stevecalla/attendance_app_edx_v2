@@ -49,6 +49,7 @@
 
 - server crash?
 - middleware-origin in server.js?
+- adjust "tech-matchup-app@1.0.0"
 
 - adjust copy icon on status tab similar to the display in the code copy ux
 - duration incorrect when participant name changes
