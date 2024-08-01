@@ -45,6 +45,7 @@
 - DONE = Heroku deploy. Add env variables 
 - DONE = removed pwa for now since it wasn't working offline
 - DONE = adjust favicon path; without pwa favicon loaded from /public/favicon.ico in dev and /favicon.ico in production
+- DONE = added asset folder in public. changed favicon path to ./assets/favicon.ico
 
 - server crash?
 - middleware-origin in server.js?
@@ -52,7 +53,6 @@
 - adjust copy icon on status tab similar to the display in the code copy ux
 - duration incorrect when participant name changes
 - add delete button to allow user to delete roster/participants
-- set flavicon
 - add readme
 - log page events
 - use context for attendance data?
