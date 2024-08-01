@@ -41,16 +41,28 @@
 - DONE = move instructions & code data to util file
 - DONE = set small gap between attendance and instructions container
 
+### 7/31/24
+- DONE = Heroku deploy. Add env variables 
+
+- alternative display for youtube video (since not available offline)
+
+- server crash?
+- pwa offline
+- middleware-origin in server.js?
+
+- adjust copy icon on status tab similar to the display in the code copy ux
+- duration incorrect when participant name changes
 - add delete button to allow user to delete roster/participants
 - set flavicon
 - add readme
 - log page events
-- pwa offline
 - use context for attendance data?
+- remove console logs
 
+- check on iphone
 - refactor manage_token_user_id utility
 - refactor file structure = adjust index.jsx to name of component
   `https://dev.to/vyan/mastering-react-a-developers-guide-to-structuring-your-frontend-code-45a5?context=digest`
-- launch in heroku; check the app
+
 - launch in render
 - add redis in render = can I see the redis data in render?
