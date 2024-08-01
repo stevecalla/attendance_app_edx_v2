@@ -44,7 +44,6 @@ function InstructionsContainter() {
               <Accordion.Item key={index} eventKey={index}>
                 <Accordion.Header>{header}</Accordion.Header>
                 <Accordion.Body>
-                  {navigator.onLine ? <p>ONLINE</p> : <p>OFFLINE</p>}
                   <div dangerouslySetInnerHTML={{ __html: body }} />
                 </Accordion.Body>
               </Accordion.Item>

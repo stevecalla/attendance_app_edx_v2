@@ -165,7 +165,6 @@ export const codeData = [
   {
     header: `Video Demo`,
     body: `
-      {navigator.onLine ? <p>ONLINE</p> : <p>OFFLINE</p>}
       <iframe width="560" height="315" src="https://www.youtube.com/embed/Wta_kxh27aU"
         title="YouTube video player" frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
