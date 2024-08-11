@@ -85,6 +85,7 @@ const verifyTokenMiddleware = async (req, res, next) => {
         if (err.name === 'TokenExpiredError') {
           console.log('Token expired');
           
+          // did not return 401 error because intention is to alert & reset rather than error
           return res.json(true);
           // return res.status(401).json({ error: 'Token expired' }); // Respond with 401 Unauthorized for expired tokens
         } else {

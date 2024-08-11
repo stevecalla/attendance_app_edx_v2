@@ -32,11 +32,10 @@ function UploadFileSelector({
   const handleSelectFile = async (event) => {
     const isTokenExpired = await validateToken(); // ensure user-id/token is valid
 
-    if (isTokenExpired === undefined) {
-      await generateToken();
-    }
+    console.log('upload file button 1 = ', isTokenExpired);
 
     if (isTokenExpired) {
+      alert("Data expired for security. Upload data again.");
       await generateToken();
       fileInputRef.current.value = "";
       setSelectedFiles([]); // Clear selected files state

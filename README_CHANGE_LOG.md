@@ -49,7 +49,7 @@
 
 ### 8/1/24
 - DONE = adjut verifyTokenMiddleware if no token to return next() to both exit function and next to generate a new token
-- adjust verifyTokenMiddleware if token expired return res.json(true); to real error message?; adjust manage_token_user_id to accept error
+- DONE = adjust verifyTokenMiddleware if token expired return res.json(true); to real error message?; adjust manage_token_user_id to accept error; did not do this because an error caused the program to stop working while returning true allowed the token to reset
 
 - server crash?
 - middleware-origin in server.js?

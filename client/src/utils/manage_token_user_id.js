@@ -16,14 +16,18 @@ export const validateToken = async () => {
 
   // if no token return undefined
   if (!token) {
+    await generateToken();
     return undefined;
   }
 
   // if token check if expired; if expired return true
   if (token) {
-    const isExpired = await isTokenExpired();
+    const isExpired = await isTokenExpired(token);
+
+    console.log('manage token user id = ', isExpired);
+
+    // if (isExpired) {    
     if (isExpired) {
-      alert("Data expired for security. Upload data again.");
       clearLocalStorageItem(localStorageKey);
 
       // clearChooseFileContent();
