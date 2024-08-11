@@ -31,10 +31,6 @@ function UploadFileButton({
 
     const isTokenExpired = await validateToken(); // ensure user-id/token is valid
 
-    if (isTokenExpired === undefined) {
-      await generateToken();
-    }
-
     if (isTokenExpired) {
       await generateToken();
       setIsStudentFileUploaded(false); // clears fileInputRef.current.value = "";

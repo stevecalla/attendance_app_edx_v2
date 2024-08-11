@@ -20,8 +20,8 @@ export const generateTokenUserId = async () => {
 };
 
 // SECTION FETCH IS TOKEN EXPIRED = GET
-export const isTokenExpired = async () => {
-  const token = await getLocalStorageItem("attendance_token");
+export const isTokenExpired = async (token) => {
+  // const token = await getLocalStorageItem("attendance_token");
 
   try {
     const response = await fetch(`/api/auth`, {

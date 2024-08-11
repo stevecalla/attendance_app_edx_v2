@@ -47,8 +47,14 @@
 - DONE = adjust favicon path; without pwa favicon loaded from /public/favicon.ico in dev and /favicon.ico in production
 - DONE = added asset folder in public. changed favicon path to ./assets/favicon.ico
 
+### 8/1/24
+- DONE = adjut verifyTokenMiddleware if no token to return next() to both exit function and next to generate a new token
+- DONE = adjust verifyTokenMiddleware if token expired return res.json(true); to real error message?; adjust manage_token_user_id to accept error; did not do this because an error caused the program to stop working while returning true allowed the token to reset
+
 - server crash?
 - middleware-origin in server.js?
+- adjust "tech-matchup-app@1.0.0"
+- change copy to cursor copy
 
 - adjust copy icon on status tab similar to the display in the code copy ux
 - duration incorrect when participant name changes

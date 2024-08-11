@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 // const { checkHost } = require('./middleware_origin.js');
 const { verifyTokenMiddleware } = require('./utilities/auth');
 
-
 const routes = require("./routes");
 
 const app = express();
