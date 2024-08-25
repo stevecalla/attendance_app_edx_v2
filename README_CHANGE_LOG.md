@@ -48,24 +48,24 @@
 - DONE = added asset folder in public. changed favicon path to ./assets/favicon.ico
 
 ### 8/1/24
-- DONE = adjut verifyTokenMiddleware if no token to return next() to both exit function and next to generate a new token
+- DONE = adjust verifyTokenMiddleware if no token to return next() to both exit function and next to generate a new token
 - DONE = adjust verifyTokenMiddleware if token expired return res.json(true); to real error message?; adjust manage_token_user_id to accept error; did not do this because an error caused the program to stop working while returning true allowed the token to reset
 
-### SA8/10/24
-- complete 8/1/24 above
-- adjust youtube to no cookie url
+### SU8/25/24
+- DONE = complete 8/1/24 above
+- DONE = adjust youtube to no cookie url
+- DONE = server crash?
+- DONE = adjust "tech-matchup-app@1.0.0"
 
-
-- server crash?
-- middleware-origin in server.js?
-- adjust "tech-matchup-app@1.0.0"
 - change copy to cursor copy
-
 - adjust copy icon on status tab similar to the display in the code copy ux
+
+- log page events
+- middleware-origin in server.js?
+
 - duration incorrect when participant name changes
 - add delete button to allow user to delete roster/participants
 - add readme
-- log page events
 - use context for attendance data?
 - remove console logs
 
