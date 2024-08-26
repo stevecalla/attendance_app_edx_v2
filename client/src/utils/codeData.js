@@ -1,6 +1,7 @@
 export const codeData = [
   {
-    header: `Select Student List`,
+    title: `Select Student List`,
+    hasCopyButton: true,
     body: `
       <code>
         // STEP #1: SELECT STUDENT LIST
@@ -22,7 +23,8 @@ export const codeData = [
     `
   },
   {
-    header: `Print Student List`,
+    title: `Print Student List`,
+    hasCopyButton: true,
     body: `
       <code>
         // STEP #2 PRINT STUDENT LIST WITH ATTENDANCE
@@ -56,7 +58,8 @@ export const codeData = [
     `
   },
   {
-    header: `Export Student List`,
+    title: `Export Student List`,
+    hasCopyButton: true,
     body: `
       <code>
         // STEP 3: EXPORT STUDENTS (to CSV)
@@ -73,7 +76,7 @@ export const codeData = [
         <br />  document.body.removeChild(link);
         <br />}
         <br />
-        <br />  // Export to CSV with column header "Name"
+        <br />  // Export to CSV with column title "Name"
         <br />function exportArrayToCSV(filename = '') {
         <br />  // Example data (array of names)
         <br />
@@ -86,7 +89,7 @@ export const codeData = [
         <br />  console.log(studentList); // NODE LIST
         <br />   console.log(students); // ARRAY
         <br />
-        <br />  // Insert column header
+        <br />  // Insert column title
         <br />  students.unshift(['name']);
         <br />
         <br />  // Specify file name
@@ -127,7 +130,8 @@ export const codeData = [
     `
   },
   {
-    header: `Set Attendance Status`,
+    title: `Set Attendance Status`,
+    hasCopyButton: true,
     body: `
       <code>
         //STEP 4: SET ATTENDANCE STATUS
@@ -163,7 +167,8 @@ export const codeData = [
     `
   },
   {
-    header: `Video Demo`,
+    title: `Demo Video`,
+    hasCopyButton: false,
     body: `
       <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Wta_kxh27aU"
         title="YouTube video player" frameBorder="0"

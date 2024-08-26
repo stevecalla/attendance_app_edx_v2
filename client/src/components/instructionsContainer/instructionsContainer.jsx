@@ -1,37 +1,20 @@
 import { useState, useRef } from 'react';
-import { codeData } from '../../utils/codeData';
-import { instructionsData } from '../../utils/instructionsData';
 
-import "./instructionsContainer.css";
+import CopyButton from '../copyButton/copyButton';
+import { copyContentToClipboard } from '../../utils/copyContentToClipboard';
+
+import { instructionsData } from '../../utils/instructionsData';
+import { codeData } from '../../utils/codeData';
+
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
+import "./instructionsContainer.css";
 
 function InstructionsContainter() {
   // USED TO COPY CODE CONTENT
-  const [copiedIndex, setCopiedIndex] = useState(null);
+  const [targetClickedIndex, setTargetClickedIndex] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(false);
   const bodyRefs = useRef([]);
-
-  function handleCopyClick(event, index) {
-    event.stopPropagation(); // prevent accordian from opening when copy button clicked
-
-    // Get the content from the Accordion.Body using the ref
-    const content = bodyRefs.current[index].innerText; // or use `innerHTML` if needed
-
-    // Copy the content to the clipboard
-    navigator.clipboard.writeText(content).then(
-      () => {
-        console.log('Content copied to clipboard');
-        setCopiedIndex(index); // Update the state to reflect the copied icon
-      },
-      (err) => {
-        console.error('Failed to copy content: ', err);
-      }
-    );
-
-    setTimeout(() => {
-      setCopiedIndex(null);
-    }, 2000);
-  }
 
   return (
     <>
@@ -40,9 +23,9 @@ function InstructionsContainter() {
         <Card.Header>Instructions</Card.Header>
         <Card.Body className="custom-card-scroll">
           <Accordion>
-            {instructionsData?.map(({ header, body }, index) => (
+            {instructionsData?.map(({ title, body }, index) => (
               <Accordion.Item key={index} eventKey={index}>
-                <Accordion.Header>{header}</Accordion.Header>
+                <Accordion.Header>{title}</Accordion.Header>
                 <Accordion.Body>
                   <div dangerouslySetInnerHTML={{ __html: body }} />
                 </Accordion.Body>
@@ -57,25 +40,22 @@ function InstructionsContainter() {
         <Card.Header> Library - Chrome Scripts </Card.Header>
         <Card.Body className="custom-card-scroll">
           <Accordion>
-            {codeData?.map(({ header, body }, index) => (
+            {codeData?.map(({ title, body, hasCopyButton }, index) => (
               <Accordion.Item key={index} eventKey={index}>
                 <Accordion.Header>
-                  <span className="header-title">{header}</span>
+                  <span className="header-title">{title}</span>
                   <span>
-                    {header !== "Video Demo" &&
-                      <i
-                        id='copy-attendance-status-button'
-                        className={`
-                          bi 
-                          ${copiedIndex === index ? 'bi-clipboard-check' : 'bi-copy'} 
-                          ${copiedIndex === index ? 'copy-code-color-green' : 'inherit'}
-                          copy-code-button
-                        `}
-                        data-bs-toggle='tooltip'
-                        data-bs-placement='top'
-                        title='Copy to clipboard'
-                        onClick={(event) => handleCopyClick(event, index)}
-                      ></i>
+                    {hasCopyButton &&
+                      <CopyButton
+                        targetClickedIndex={targetClickedIndex}
+                        copyContentIndex={index}
+                        handleCopyClick={(event) => {
+                          event.stopPropagation(); // Prevent accordion from opening
+                          const content = bodyRefs.current[index]?.innerText || '';
+                          copyContentToClipboard(content, setTargetClickedIndex, index, setIsDisabled);
+                        }}
+                        isDisabled={isDisabled}
+                      />
                     }
                   </span>
                 </Accordion.Header>

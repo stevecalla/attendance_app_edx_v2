@@ -10,7 +10,6 @@ function Attendance() {
 
       {/* <Row className="g-4"> */}
 
-
         {/* SECTION ATTENDANCE PANEL */}
         <div className="sub-container me-md-1">
           <AttendanceContainer />

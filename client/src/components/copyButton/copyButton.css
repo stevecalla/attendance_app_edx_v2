@@ -1,0 +1,45 @@
+/* POSITION FOR ATTENDANCE STATUS PANEL IS DIFFERENT THAN INSTRUCTIONS CODE CONTAINER */
+.copy-button-status-position {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.copy-button-code-position {
+  position: inherit;
+  bottom: inherit;
+  right: inherit;
+  cursor: inherit;
+  z-index: inherit;
+}
+
+.copy-button {
+  font-size: 18px;
+}
+
+.copy-button-disabled {
+  color: gray;
+  cursor: not-allowed;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.copy-button:hover {
+  color: green;
+  cursor: copy;
+  font-weight: bold;
+}
+
+.copy-color-clicked {
+  color: green;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+/* .copy-color-inherit {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+} */

@@ -29,18 +29,3 @@ code {
 .header-title {
   width: 90%;
 }
-
-.copy-code-button {
-  font-size: 18px;
-}
-
-.copy-code-button:hover {
-  color: green;
-  font-weight: bold;
-}
-
-.copy-code-color-green {
-  color: green;
-  font-size: 24px;
-  font-weight: bolder;
-}
