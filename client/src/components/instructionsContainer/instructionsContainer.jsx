@@ -1,36 +1,46 @@
 import { useState, useRef } from 'react';
-import { codeData } from '../../utils/codeData';
-import { instructionsData } from '../../utils/instructionsData';
 
-import "./instructionsContainer.css";
+import CopyButton from '../copyButton/copyButton';
+
+import { instructionsData } from '../../utils/instructionsData';
+import { codeData } from '../../utils/codeData';
+
 import Card from 'react-bootstrap/Card';
 import Accordion from 'react-bootstrap/Accordion';
+import "./instructionsContainer.css";
 
 function InstructionsContainter() {
   // USED TO COPY CODE CONTENT
-  const [copiedIndex, setCopiedIndex] = useState(null);
+  const [targetClickedIndex, settargetClickedIndex] = useState(null);
   const bodyRefs = useRef([]);
 
-  function handleCopyClick(event, index) {
-    event.stopPropagation(); // prevent accordian from opening when copy button clicked
+  async function handleCopyClick(event, index) {
+    console.log(event, index)
+    // prevent accordian from opening when copy button clicked
+    event.stopPropagation(); 
 
     // Get the content from the Accordion.Body using the ref
-    const content = bodyRefs.current[index].innerText; // or use `innerHTML` if needed
+    const content = bodyRefs.current[index]?.innerText || '';
 
-    // Copy the content to the clipboard
-    navigator.clipboard.writeText(content).then(
-      () => {
-        console.log('Content copied to clipboard');
-        setCopiedIndex(index); // Update the state to reflect the copied icon
-      },
-      (err) => {
-        console.error('Failed to copy content: ', err);
-      }
-    );
+    try {
+      // Copy the content to the clipboard
+      await navigator.clipboard.writeText(content);
 
-    setTimeout(() => {
-      setCopiedIndex(null);
-    }, 2000);
+      console.log('Content copied to clipboard');
+      settargetClickedIndex(index); // Update the state to reflect the clicked copy icon
+
+      setTimeout(() => {
+        settargetClickedIndex(null);
+      }, 2000);
+
+      // set navigator clipboard content to "content cleared after 10 seconds" after 10 seconds
+      // setTimeout(() => {
+      //   navigator.clipboard.writeText('Content cleared after 10 seconds');
+      // }, 10000);
+      
+    } catch (err) {
+      console.error('Failed to copy content: ', err);
+    }
   }
 
   return (
@@ -63,19 +73,13 @@ function InstructionsContainter() {
                   <span className="header-title">{header}</span>
                   <span>
                     {header !== "Video Demo" &&
-                      <i
-                        id='copy-attendance-status-button'
-                        className={`
-                          bi 
-                          ${copiedIndex === index ? 'bi-clipboard-check' : 'bi-copy'} 
-                          ${copiedIndex === index ? 'copy-code-color-green' : 'inherit'}
-                          copy-code-button
-                        `}
-                        data-bs-toggle='tooltip'
-                        data-bs-placement='top'
-                        title='Copy to clipboard'
-                        onClick={(event) => handleCopyClick(event, index)}
-                      ></i>
+
+                      <CopyButton
+                        targetClickedIndex={targetClickedIndex}
+                        copyContentIndex={index}
+                        handleCopyClick={handleCopyClick}
+                      />
+
                     }
                   </span>
                 </Accordion.Header>

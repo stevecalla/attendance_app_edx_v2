@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 
+import CopyButton from '../copyButton/copyButton';
+
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import './attendanceStatusPanel.css';
 
 function AttendanceStatusPanel({ studentAttendance }) {
+  const [targetClickedIndex, settargetClickedIndex] = useState(false);
   const [attendanceStatus, setAttendanceStatus] = useState('');
 
   useEffect(() => {
@@ -18,7 +21,7 @@ function AttendanceStatusPanel({ studentAttendance }) {
       setAttendanceStatus(formattedData);
 
       console.log(formattedData);
-    } 
+    }
   }, [studentAttendance]);
 
   // Handle changes to the text area
@@ -28,12 +31,30 @@ function AttendanceStatusPanel({ studentAttendance }) {
 
   async function handleCopyClick() {
     console.log('copy click');
+
     try {
+
       // Copy the attendance status string to the clipboard
-      await navigator.clipboard.writeText(attendanceStatus)
-      console.log('Copied to clipboard:', attendanceStatus)
+      await navigator.clipboard.writeText(attendanceStatus);
+
+      console.log('Copied to clipboard:', attendanceStatus);
+
+      // setIsClickedToCopy(true);
+      settargetClickedIndex(true);
+
+      setTimeout(() => {
+        settargetClickedIndex(false);
+      }, 2000);
+
+      // set navigator clipboard content to "content cleared after 10 seconds" after 10 seconds
+      // setTimeout(() => {
+      //   navigator.clipboard.writeText('Content cleared after 10 seconds');
+      // }, 10000);
+
     } catch (error) {
-      console.error('Failed to copy attendance status to clipboard:', error)
+
+      console.error('Failed to copy attendance status to clipboard:', error);
+
     }
   }
 
@@ -50,15 +71,15 @@ function AttendanceStatusPanel({ studentAttendance }) {
         value={attendanceStatus}
         onChange={handleChange}
       />
-      <i
-        id='copy-attendance-status-button'
-        // className='bi bi-copy copy-status-button disabled'
-        className='bi bi-copy copy-status-button'
-        data-bs-toggle='tooltip'
-        data-bs-placement='top'
-        title='Copy to clipboard'
-        onClick={handleCopyClick}
-      ></i>
+
+      {/* <CopyButton isClickedToCopy={isClickedToCopy} handleCopyClick={() => handleCopyClick()} /> */}
+
+      <CopyButton
+        targetClickedIndex={targetClickedIndex}
+        copyContentIndex={true}
+        handleCopyClick={handleCopyClick}
+      />
+
     </FloatingLabel>
   )
 }
