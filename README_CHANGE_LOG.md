@@ -56,10 +56,10 @@
 - DONE = adjust youtube to no cookie url
 - DONE = server crash?
 - DONE = adjust "tech-matchup-app@1.0.0"
+- DONE = change copy to cursor copy
+- DONE = adjust copy icon on status tab similar to the display in the code copy ux
 
-- change copy to cursor copy
-- adjust copy icon on status tab similar to the display in the code copy ux
-
+### M8/26/24
 - log page events
 - middleware-origin in server.js?
 
@@ -68,6 +68,7 @@
 - add readme
 - use context for attendance data?
 - remove console logs
+- adjust time for token expiration from 1 min to 60 minutew
 
 - check on iphone
 - refactor manage_token_user_id utility
