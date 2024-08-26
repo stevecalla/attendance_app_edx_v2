@@ -1,23 +1,21 @@
 import './copyButton.css';
 
-function copyButton({ copyContentIndex, handleCopyClick, targetClickedIndex }) {
-
-  console.log(copyContentIndex, handleCopyClick, targetClickedIndex, typeof targetClickedIndex);
-
+function copyButton({ copyContentIndex, handleCopyClick, targetClickedIndex, isDisabled }) {
   return (
     <i
       id='copy-attendance-status-button'
       className={`
+          ${targetClickedIndex === copyContentIndex ? 'bi-clipboard-check' : 'bi-copy'} 
           bi 
           copy-button
-          ${typeof targetClickedIndex === 'boolean' ? 'copy-button-position' : 'inherit'}
-          ${targetClickedIndex === copyContentIndex ? 'bi-clipboard-check' : 'bi-copy'} 
-          ${targetClickedIndex === copyContentIndex ? 'copy-color-green' : 'inherit'} 
+          ${typeof targetClickedIndex === 'boolean' ? 'copy-button-status-position' : 'copy-button-code-position'}
+          ${targetClickedIndex === copyContentIndex ? 'copy-color-clicked' : 'copy-color-inherit'} 
+          ${isDisabled ? 'copy-button-disabled' : ''}
         `}
       data-bs-toggle='tooltip'
       data-bs-placement='top'
       title='Copy to clipboard'
-      onClick={(event) => handleCopyClick( event, copyContentIndex )}
+      onClick={(event) => handleCopyClick(event, copyContentIndex)}
     ></i>
   )
 }

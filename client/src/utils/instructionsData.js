@@ -1,6 +1,6 @@
 export const instructionsData = [
   {
-    header: "Summary",
+    title: "Summary",
     body: `
       <ul className="m-0">
         <li>Ensure Zoom name is similar to the roster name.</li>
@@ -9,7 +9,7 @@ export const instructionsData = [
       </ul>`,
   },
   {
-    header: "Get Student Roster",
+    title: "Get Student Roster",
     body: `
       <ul className="m-0">
         <li>Use Chrome scripts to manually download roster from
@@ -34,7 +34,7 @@ export const instructionsData = [
     `,
   },
   {
-    header: "Get Zoom Participants Report",
+    title: "Get Zoom Participants Report",
     body: `
       <ul>
         <li>Manually download Zoom Participants Report from
@@ -58,7 +58,7 @@ export const instructionsData = [
     `,
   },
   {
-    header: "Upload Reports",
+    title: "Upload Reports",
     body: `
       <ul>
         <li>Upload the Student Roster & Zoom Participants Report</li>
@@ -76,7 +76,7 @@ export const instructionsData = [
     `,
   },
   {
-    header: "Get Attendance Status",
+    title: "Get Attendance Status",
     body: `
       <ul>
         <li>Get attendance status</li>
@@ -92,7 +92,7 @@ export const instructionsData = [
     `,
   },
   {
-    header: "Update Bootcamp",
+    title: "Update Bootcamp",
     body: `
       <ul>
         <li>Update
@@ -118,7 +118,7 @@ export const instructionsData = [
     `,
   },
   {
-    header: "Notes",
+    title: "Notes",
     body: `
       <ul className="m-0">
         <li>All data is secured in a backend database.</li>
