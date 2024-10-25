@@ -1,10 +1,11 @@
 const dotenv = require('dotenv');
-dotenv.config({ path: '../../../.env' });
+// dotenv.config({ path: '../../../.env' });
+dotenv.config();
 
 const jwt = require('jsonwebtoken');
 const decode = require('jwt-decode');
 
-// using process env to align token & redis store expiration
+// using hprocess env to align token & redis store expiration
 // const expiration = `${process.env.EXPIRATION_HOURS}h`; // = 1 hour
 const expiration = '1m';
 
